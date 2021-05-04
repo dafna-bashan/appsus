@@ -27,12 +27,12 @@ class _AppHeader extends React.Component {
     return (
       <nav className="app-header">
         <UserMsg/>
-        <h1>Book Shop</h1>
+        <h1>AppSus</h1>
         <ul className="clean-list">
           <li><NavLink exact to="/">Home</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
           <li><NavLink to="/book">Books</NavLink></li>
-          <li><NavLink to="/add-book">Add Book</NavLink></li>
+          <li><NavLink to="/mail">Mail</NavLink></li>
+          <li><NavLink to="/keep">Keep</NavLink></li>
           <li><button onClick={() => {
             this.props.history.push('/')
           }}>Back</button></li>

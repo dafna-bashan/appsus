@@ -12,7 +12,7 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
-                    <Route component={BookApp} path="/books" />
+                    <Route component={BookApp} path="/book" />
                     <Route component={KeepApp} path="/keep" />
                     <Route component={EmailApp} path="/mail" />
                     <Route component={Home} path="/" />

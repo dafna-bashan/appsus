@@ -1,4 +1,4 @@
-import { storageService } from '.'
+import { storageService } from '../../../services/storage-service.js'
 
 export const bookService = {
     query,
@@ -7,9 +7,9 @@ export const bookService = {
 }
 
 var gEmails = [
-    {subject: 'Wassap?', body: 'Pick up!', isRead : false, sentAt : 1551133930594},
-    {subject: 'hello all', body: 'hello nice to meat you!', isRead: false, sentAt : 1551133930598},
-    {subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt : 1551133930700}
+    { subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
+    { subject: 'hello all', body: 'hello nice to meat you!', isRead: false, sentAt: 1551133930598 },
+    { subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930700 }
 ]
 
 function query(filterBy) {
@@ -24,4 +24,3 @@ function query(filterBy) {
     }
     return Promise.resolve(gEmails);
 }
-

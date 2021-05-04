@@ -1,5 +1,5 @@
 import { bookService } from '../services/book-service.js';
-import { utilService } from '../services/util-service.js'
+import { utilService } from '../../../services/util-service.js'
 
 export class ReviewAdd extends React.Component {
 

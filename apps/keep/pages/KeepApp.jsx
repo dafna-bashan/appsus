@@ -9,7 +9,7 @@ export class KeepApp extends React.Component {
 
     }
     componentDidMount() {
-        loadNotes();
+        // loadNotes();
     }
 
     loadNotes() {

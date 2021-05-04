@@ -1,16 +1,16 @@
 const { Link } = ReactRouterDOM
 
-import { emailService } from '../apps/mail/service/email-service.js'
-import { EmailList } from '../apps/mail/cmps/EmailList.jsx'
+import { emailService } from '../services/email-service.js'
+import { EmailList } from '../cmps/EmailList.jsx'
 
-export class EmailApptest extends React.Component {
+export class EmailApp extends React.Component {
     state = {
         emails: null,
         filterBy: null,
         // selectedEmail: null
     }
     componentDidMount() {
-        this.loadEmails()
+        // this.loadEmails()
     }
 
     loadEmails() {
