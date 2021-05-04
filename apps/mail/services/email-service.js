@@ -7,14 +7,9 @@ export const emailService = {
     // getNextBookId
 }
 
-const KEY = 'mails';
+const KEY = 'mails_key';
 
 var gMails
-// var gEmails = [
-//     { id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-//     { id: utilService.makeId() , subject: 'hello all', body: 'hello nice to meat you!', isRead: true, sentAt: 1551133930598 },
-//     { id: utilService.makeId() ,subject: 'Wassap?', body: utilService.makeLorem(20), isRead: false, sentAt: 1551133930700 }
-// ]
 
 
 
@@ -36,16 +31,15 @@ function getEmailById(emailId) {
 
 function _createMails() {
     var mails = storageService.loadFromStorage(KEY)
-    if (!mails || !mails.length) {
+    if (!mails || !mails.length ) {
         mails = [
             { id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
             { id: utilService.makeId(), subject: 'hello all', body: 'hello nice to meat you!', isRead: true, sentAt: 1551133930598 },
             { id: utilService.makeId(), subject: 'Wassap?', body: utilService.makeLorem(20), isRead: false, sentAt: 1551133930700 }
         ]
-        _saveMailsToStorage();
     }
     gMails = mails;
-
+    _saveMailsToStorage();
 }
 
 function createMail(subject,body){
@@ -55,3 +49,4 @@ function createMail(subject,body){
 function _saveMailsToStorage() {
     storageService.saveToStorage(KEY, gMails)
 }
+

@@ -14,13 +14,14 @@ export class EmailDetails extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.match.params.emailId !== this.props.match.params.emailId) {
+        if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
             this.loadEmail()
         }
     }
 
     loadEmail() {
-        const id = this.props.match.params.emailId
+        const id = this.props.match.params.mailId
+        console.log(id);
         emailService.getEmailById(id).then(email => {
             if (!email) {
                 console.log('no email found');
