@@ -25,19 +25,21 @@ class _AppHeader extends React.Component {
   render() {
 
     return (
-      <nav className="app-header">
+      <header className="main-header">
+      <nav className="nav-container container flex align-center space-between">
         <UserMsg/>
-        <h1>AppSus</h1>
-        <ul className="clean-list">
-          <li><NavLink exact to="/">Home</NavLink></li>
-          <li><NavLink to="/book">Books</NavLink></li>
-          <li><NavLink to="/mail">Mail</NavLink></li>
-          <li><NavLink to="/keep">Keep</NavLink></li>
-          <li><button onClick={() => {
+        <div className="logo">AppSus</div>
+        <ul className="main-nav flex clean-list justify-content align-center">
+          <li className="flex justify-center align-center"><NavLink exact to="/">Home</NavLink></li>
+          <li className="flex justify-center align-center"><NavLink to="/book">Books</NavLink></li>
+          <li className="flex justify-center align-center"><NavLink to="/mail">Mail</NavLink></li>
+          <li className="flex justify-center align-center"><NavLink to="/keep">Keep</NavLink></li>
+          <li className="flex justify-center align-center"><button onClick={() => {
             this.props.history.push('/')
           }}>Back</button></li>
         </ul>
       </nav>
+      </header>
     )
   }
 }
