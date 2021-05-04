@@ -5,6 +5,7 @@ import { Home } from './pages/Home.jsx';
 import { KeepApp } from './apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './apps/books/pages/BookApp.jsx';
 import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
+import { EmailDetails } from './apps/mail/pages/EmailDetails.jsx';
 
 export function App() {
     return (
@@ -12,7 +13,7 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
-                    <Route component={EmailApp} path="/mail/add" />
+                    {/* <Route component={EmailApp} path="/mail/add" /> */}
                     <Route component={EmailDetails} path="/mail/:mailId" />
                     <Route component={BookDetails} path="/book/:bookId" />
                     <Route component={BookAdd} path="/book/add" />
