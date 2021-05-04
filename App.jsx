@@ -12,8 +12,8 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
-                    <Route component={EmailApp} path="/mail/add" />
-                    <Route component={EmailDetails} path="/mail/:mailId" />
+                    {/* <Route component={EmailApp} path="/mail/add" /> */}
+                    {/* <Route component={EmailDetails} path="/mail/:mailId" /> */}
                     <Route component={BookDetails} path="/book/:bookId" />
                     <Route component={BookAdd} path="/book/add" />
                     <Route component={BookApp} path="/book" />
