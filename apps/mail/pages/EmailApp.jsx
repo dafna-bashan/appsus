@@ -2,6 +2,7 @@ const { Link } = ReactRouterDOM
 
 import { emailService } from '../services/email-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
+import { EmailCompose } from '../cmps/EmailCompose.jsx'
 
 export class EmailApp extends React.Component {
     state = {
@@ -32,8 +33,8 @@ export class EmailApp extends React.Component {
             <div>
                 <section className="container">
                     <h1>Your emails</h1>
-                <EmailList emails={emails}></EmailList>
-                
+                    <EmailList emails={emails} />
+                    {/* <EmailCompose /> */}
                     {/* {!selectedEmail && <React.Fragment>
                         <BookFilter onSetFilter={this.onSetFilter} /> //
 

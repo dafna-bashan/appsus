@@ -22,9 +22,13 @@ export class EmailDetails extends React.Component {
     loadEmail() {
         const id = this.props.match.params.emailId
         emailService.getEmailById(id).then(email => {
-            if (!email) return this.props.history.push('/')
+            if (!email) {
+                console.log('no email found');
+                return this.props.history.push('/')
+            }
             this.setState({ email })
         })
+        console.log(this.state.email)
     }
 
     // onDeleteEmail = () => {
