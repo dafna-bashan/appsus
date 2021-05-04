@@ -1,5 +1,8 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
+import { noteService } from '../services/note.service.js'
+import {NoteFilter} from '../cmps/NoteFilter.jsx'
+import {NoteList} from '../cmps/NoteList.jsx'
 
 export class KeepApp extends React.Component {
     state = {
@@ -9,7 +12,7 @@ export class KeepApp extends React.Component {
 
     }
     componentDidMount() {
-        // loadNotes();
+        this.loadNotes();
     }
 
     loadNotes() {
@@ -30,17 +33,14 @@ export class KeepApp extends React.Component {
 
     render() {
         // console.log('RENDER!', this.state.books);
-        const { notes} = this.state
+        const { notes } = this.state
+        console.log(notes);
         if (!notes) return <div>Loading...</div>
         return (
             <div>
                 <section className="container">
-                    {!selectedNote && <React.Fragment>
-                        <NoteFilter onSetFilter={this.onSetFilter} />
-                        <NoteList notes={notes} setSelectedNote={this.setSelectedNote} />
-                    </React.Fragment>}
-                    {selectedNote &&
-                        <NoteDetails note={selectedNote} goBack={() => this.setSelectedNote(null)} />}
+                    {/* <NoteFilter onSetFilter={this.onSetFilter} /> */}
+                    <NoteList notes={notes}/>
                 </section>
             </div>
         )

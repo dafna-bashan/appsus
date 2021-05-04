@@ -1,4 +1,4 @@
-import { LongTxt } from '../cmps/LongTxt.jsx'
+import { LongTxt } from '../../../cmps/LongTxt.jsx'
 import { ReviewAdd } from '../cmps/ReviewAdd.jsx';
 import {bookService} from '../services/book-service.js'
 import {ReviewsList} from '../cmps/ReviewsList.jsx'

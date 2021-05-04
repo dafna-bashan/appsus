@@ -1,10 +1,17 @@
 'use strict';
 
-import { storageService } from '../services/storage-service.js';
+import { storageService } from '../../../services/storage-service.js';
+import { utilService } from '../../../services/util-service.js';
+
+export const noteService = {
+    query,
+    getNoteById,
+    createNote,
+}
 
 const KEY = 'notes';
 var gNotes;
-
+_createNotes();
 
 function query(filterBy) {
     if (filterBy) {
@@ -29,42 +36,60 @@ function _saveNotesToStorage() {
     storageService.saveToStorage(KEY, gNotes)
 }
 
-function createNote(type, isPinned, info) {
-    switch (type) {
-        case 'NoteText':
-            return {
-                type: 'NoteText',
-                isPinned: false,
-                info
-            }
+function createNote(type, isPinned, info, style) {
+    return {
+        id: utilService.makeId(),
+        type,
+        isPinned,
+        info,
+        style
     }
+
 }
 
-var notes = [{
-        type: "NoteText",
-        isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        }
-    },
-    {
-        type: "NoteImg",
-        info: {
-            url: "http://some-img/me",
-            title: "Me playing Mi"
+function _createNotes() {
+    var notes = [{
+            id: utilService.makeId(),
+            type: "NoteTxt",
+            isPinned: true,
+            title: 'title',
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
         },
-        style: {
-            backgroundColor: "#00d"
+        // {
+        //     type: "NoteImg",
+        //     isPinned: true,
+        //     title: "Me playing Mi",
+        //     info: {
+        //         url: "http://some-img/me",
+
+        //     },
+        //     style: {
+        //         backgroundColor: "#00d"
+        //     }
+        // },
+        {
+            id: utilService.makeId(),
+            type: "NoteTodos",
+            isPinned: true,
+            title: "Me playing Mi",
+            info: {
+                label: "How was it:",
+                todos: [
+                    { txt: "Do that", doneAt: null },
+                    { txt: "Do this", doneAt: 187111111 }
+                ]
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
         }
-    },
-    {
-        type: "NoteTodos",
-        info: {
-            label: "How was it:",
-            todos: [
-                { txt: "Do that", doneAt: null },
-                { txt: "Do this", doneAt: 187111111 }
-            ]
-        }
-    }
-];
+    ];
+
+    gNotes = notes;
+    _saveNotesToStorage();
+}
