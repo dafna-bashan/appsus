@@ -1,5 +1,5 @@
 import { eventBusService } from '../../../services/event-bus-service.js'
-import { UserMsg } from './UserMsg.jsx';
+import { UserMsg } from '../../../cmps/UserMsg.jsx';
 
 const { NavLink, withRouter } = ReactRouterDOM
 

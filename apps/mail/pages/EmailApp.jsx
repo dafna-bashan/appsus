@@ -2,20 +2,18 @@ const { Link } = ReactRouterDOM
 
 import { emailService } from '../services/email-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
+import { EmailCompose } from '../cmps/EmailCompose.jsx'
 
 export class EmailApp extends React.Component {
     state = {
-        emails: null,
-        filterBy: null,
-        // selectedEmail: null
+        emails: null
     }
     componentDidMount() {
-        // this.loadEmails()
+        this.loadEmails()
     }
 
     loadEmails() {
-        emailService.query(this.state.filterBy).then((emails) => {
-            console.log(emails);
+        emailService.query().then((emails) => {
             this.setState({ emails })
         })
     }
@@ -34,10 +32,14 @@ export class EmailApp extends React.Component {
         return (
             <div>
                 <section className="container">
-                <BookList emails={emails}></BookList>
+                    <h1>Your emails</h1>
+                    <EmailList emails={emails} />
+                    {/* <EmailCompose /> */}
                     {/* {!selectedEmail && <React.Fragment>
-                        <BookFilter onSetFilter={this.onSetFilter} />
-                        <BookList emails={emails} setSelectedEmails={this.setSelectedEmail} />
+                        <BookFilter onSetFilter={this.onSetFilter} /> //
+
+                        {<BookList emails={emails} setSelectedEmails={this.setSelectedEmail} />}
+
                     </React.Fragment>} */}
                     {/* {selectedEmail &&
                         <BookDetails className="email-details" book={selectedEmail} goBack={() => this.setSelectedEmail(null)} />} */}
