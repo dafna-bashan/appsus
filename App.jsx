@@ -1,12 +1,10 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-import { CarApp } from './pages/CarApp.jsx'
-import { CarDetails } from './pages/CarDetails.jsx'
-import { AboutUs } from './pages/AboutUs.jsx'
-import { AppHeader } from './cmps/AppHeader.jsx'
-import { CarEdit } from './pages/CarEdit.jsx'
-import { Home } from './pages/Home.jsx'
-
+import { AppHeader } from './cmps/AppHeader.jsx';
+import { Home } from './pages/Home.jsx';
+import {KeepApp} from './apps/keep/pages/KeepApp.jsx';
+import {BookApp} from './apps/books/pages/BookApp.jsx';
+import {EmailApp} from './apps/mail/pages/EmailApp.jsx';
 
 export function App() {
     return (
@@ -14,10 +12,9 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
-                    <Route component={CarEdit} path="/car/edit/:carId?" />
-                    <Route component={CarDetails} path="/car/:carId/:carVendor?" />
-                    <Route component={CarApp} path="/car" />
-                    <Route component={AboutUs} path="/about" />
+                    <Route component={BookApp} path="/books" />
+                    <Route component={KeepApp} path="/keep" />
+                    <Route component={EmailApp} path="/mail" />
                     <Route component={Home} path="/" />
                     {/* If we want to send props to a route: */}
                     {/* <Route render={(props)=> <AboutUs {...props} name="popo"/>} path="/about" /> */}
