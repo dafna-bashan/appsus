@@ -1,6 +1,7 @@
 @import '../../apps/mail/assets/cmps-css/EmailPreview.css';
 @import './app-header.css';
 @import './app-footer.css';
+@import '../../apps/keep/assets/css/note-add.css';
 * {
     box-sizing: border-box;
 }
@@ -25,6 +26,11 @@ body {
 @font-face {
     font-family: roboto-bold;
     src: url(../fonts/roboto/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: brands;
+    src: url(../fonts/awesome/fa-brands-400.ttf);
 }
 
 

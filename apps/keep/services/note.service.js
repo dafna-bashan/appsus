@@ -35,14 +35,23 @@ function getNoteById(noteId) {
 function _saveNotesToStorage() {
     storageService.saveToStorage(KEY, gNotes)
 }
+getVideos('https://www.youtube.com/embed/1lFI8sYN1Rc')
 
-function createNote(type, isPinned, info, style) {
+function getVideos(url) {
+    const prm = axios.get(url).then(res => res.data);
+    console.log(prm);
+    return prm;
+}
+
+function createNote(type, info) {
     return {
         id: utilService.makeId(),
         type,
-        isPinned,
+        isPinned: false,
         info,
-        style
+        style: {
+            backgroundColor: "#00d"
+        }
     }
 
 }
@@ -52,36 +61,49 @@ function _createNotes() {
             id: utilService.makeId(),
             type: "NoteTxt",
             isPinned: true,
-            title: 'title',
+            title: 'Coding',
             info: {
-                txt: "Fullstack Me Baby!"
+                txt: "I love coding!"
             },
             style: {
                 backgroundColor: "#00d"
             }
         },
-        // {
-        //     type: "NoteImg",
-        //     isPinned: true,
-        //     title: "Me playing Mi",
-        //     info: {
-        //         url: "http://some-img/me",
+        {
+            id: utilService.makeId(),
+            type: "NoteImg",
+            isPinned: true,
+            title: "Art",
+            info: {
+                url: "https://i.pinimg.com/564x/9a/b0/7b/9ab07b7ae73e44a806c468e6fd174149.jpg",
 
-        //     },
-        //     style: {
-        //         backgroundColor: "#00d"
-        //     }
-        // },
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
+            id: utilService.makeId(),
+            type: "NoteVideo",
+            isPinned: true,
+            title: "Music",
+            info: {
+                url: "https://www.youtube.com/embed/1lFI8sYN1Rc",
+
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
         {
             id: utilService.makeId(),
             type: "NoteTodos",
             isPinned: true,
-            title: "Me playing Mi",
+            title: "Todo",
             info: {
-                label: "How was it:",
                 todos: [
-                    { txt: "Do that", doneAt: null },
-                    { txt: "Do this", doneAt: 187111111 }
+                    { txt: "Implement keep app", doneAt: null },
+                    { txt: "Implement mail app", doneAt: 187111111 }
                 ]
             },
             style: {

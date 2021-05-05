@@ -3,6 +3,7 @@ const { Route, Switch } = ReactRouterDOM
 import { noteService } from '../services/note.service.js'
 import {NoteFilter} from '../cmps/NoteFilter.jsx'
 import {NoteList} from '../cmps/NoteList.jsx'
+import {NoteAdd} from '../cmps/NoteAdd.jsx'
 
 export class KeepApp extends React.Component {
     state = {
@@ -39,6 +40,7 @@ export class KeepApp extends React.Component {
         return (
             <div>
                 <section className="container">
+                    <NoteAdd/>
                     {/* <NoteFilter onSetFilter={this.onSetFilter} /> */}
                     <NoteList notes={notes}/>
                 </section>

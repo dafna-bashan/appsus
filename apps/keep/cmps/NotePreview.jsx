@@ -1,6 +1,6 @@
 const { Link } = ReactRouterDOM
 import { NoteTxt } from './NoteTxt.jsx';
-import { NoteImg } from './NoteImg';
+import { NoteImg } from './NoteImg.jsx';
 import { NoteTodos } from './NoteTodos.jsx';
 import { NoteVideo } from './NoteVideo.jsx';
 
