@@ -7,12 +7,9 @@ import { KeepApp } from './apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './apps/books/pages/BookApp.jsx';
 import { EmailCompose } from './apps/mail/pages/EmailCompose.jsx';
 import { EmailDetails } from './apps/mail/pages/EmailDetails.jsx';
-<<<<<<< HEAD
 import {NoteEdit} from './apps/keep/cmps/NoteEdit.jsx';
-=======
 import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
 import { AppFooter } from './cmps/AppFooter.jsx';
->>>>>>> f779936270f5c9c06d31485661c44c28bb525d8c
 
 export function App() {
     return (
