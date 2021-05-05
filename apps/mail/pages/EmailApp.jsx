@@ -11,6 +11,9 @@ export class EmailApp extends React.Component {
     componentDidMount() {
         this.loadEmails()
     }
+    // componentDidUpdate() {
+    //     this.loadEmails()
+    // }
 
     loadEmails() {
         emailService.query().then((emails) => {
@@ -34,7 +37,7 @@ export class EmailApp extends React.Component {
                 <section className="container">
                     <h1>Your emails</h1>
                     <EmailList emails={emails} />
-                    {/* <EmailCompose /> */}
+                    <EmailCompose />
                     {/* {!selectedEmail && <React.Fragment>
                         <BookFilter onSetFilter={this.onSetFilter} /> //
 
