@@ -29,6 +29,7 @@ export class BookApp extends React.Component {
         this.setState({ selectedBook: book })
     }
 
+    
     render() {
         // console.log('RENDER!', this.state.books);
         const { books, selectedBook } = this.state

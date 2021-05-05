@@ -11,6 +11,7 @@ body {
     margin: 0;
 }
 
+
 /* FONTS */
 
 @font-face {
@@ -28,15 +29,12 @@ body {
     src: url(../fonts/roboto/Roboto-Bold.ttf);
 }
 
-<<<<<<< HEAD
 @font-face {
     font-family: brands;
     src: url(../fonts/awesome/fa-brands-400.ttf);
 }
 
 
-=======
->>>>>>> 6ca65980e7292a13a943217b7e1468a8ea8fbe2b
 /* GENERAL */
 
 html {
@@ -45,7 +43,12 @@ html {
     height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
     /* font-weight: normal; */
 }
@@ -56,7 +59,8 @@ button {
     cursor: pointer;
 }
 
-label, input {
+label,
+input {
     cursor: pointer;
 }
 
@@ -68,19 +72,16 @@ a:link {
 a:visited {
     text-decoration: none;
     color: black;
-
 }
 
 a:hover {
     text-decoration: none;
     color: black;
-
 }
 
 a:active {
     text-decoration: none;
     color: black;
-
 }
 
 
@@ -90,6 +91,7 @@ a:active {
     max-width: 350px;
     margin: 0 auto;
 }
+
 
 /* flex helpers */
 
@@ -121,6 +123,7 @@ a:active {
     display: none;
 }
 
+
 /* list helpers */
 
 .clean-list {
@@ -128,6 +131,7 @@ a:active {
     margin: 0;
     padding: 0;
 }
+
 
 /* COMPONENTS */
 
@@ -150,7 +154,9 @@ a:active {
     flex: 1;
 }
 
+
 /* MEDIA QUERIES */
+
 
 /* SMALL */
 
@@ -160,6 +166,7 @@ a:active {
     }
 }
 
+
 /* MEDIUM */
 
 @media (min-width: 700px) {
@@ -167,6 +174,7 @@ a:active {
         max-width: 660px;
     }
 }
+
 
 /* LARGE */
 

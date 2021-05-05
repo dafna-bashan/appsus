@@ -7,6 +7,7 @@ export const noteService = {
     query,
     getNoteById,
     createNote,
+    removeNote
 }
 
 const KEY = 'notes';
@@ -35,82 +36,90 @@ function getNoteById(noteId) {
 function _saveNotesToStorage() {
     storageService.saveToStorage(KEY, gNotes)
 }
-getVideos('https://www.youtube.com/embed/1lFI8sYN1Rc')
 
-function getVideos(url) {
-    const prm = axios.get(url).then(res => res.data);
-    console.log(prm);
-    return prm;
+
+function removeNote(id) {
+    console.log(id);
+    const idx = gNotes.findIndex(note => note.id === id);
+    console.log(idx);
+    gNotes.splice(idx, 1);
+    storageService.saveToStorage(KEY, gNotes);
 }
 
-function createNote(type, info) {
-    return {
+function createNote(state) {
+    console.log(state);
+    const { type, title, info, style } = state.note;
+    const note = {
         id: utilService.makeId(),
         type,
         isPinned: false,
+        title,
         info,
-        style: {
-            backgroundColor: "#00d"
-        }
+        style
     }
-
+    gNotes.unshift(note);
+    _saveNotesToStorage()
+    return Promise.resolve();
 }
 
 function _createNotes() {
-    var notes = [{
-            id: utilService.makeId(),
-            type: "NoteTxt",
-            isPinned: true,
-            title: 'Coding',
-            info: {
-                txt: "I love coding!"
+    var notes = storageService.loadFromStorage(KEY)
+    if (!notes || !notes.length) {
+        notes = [{
+                id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: true,
+                title: 'Coding',
+                info: {
+                    txt: "I love coding!"
+                },
+                style: {
+                    backgroundColor: "#00d"
+                }
             },
-            style: {
-                backgroundColor: "#00d"
-            }
-        },
-        {
-            id: utilService.makeId(),
-            type: "NoteImg",
-            isPinned: true,
-            title: "Art",
-            info: {
-                url: "https://i.pinimg.com/564x/9a/b0/7b/9ab07b7ae73e44a806c468e6fd174149.jpg",
+            {
+                id: utilService.makeId(),
+                type: "NoteImg",
+                isPinned: true,
+                title: "Art",
+                info: {
+                    url: "https://i.pinimg.com/564x/9a/b0/7b/9ab07b7ae73e44a806c468e6fd174149.jpg",
 
+                },
+                style: {
+                    backgroundColor: "#00d"
+                }
             },
-            style: {
-                backgroundColor: "#00d"
-            }
-        },
-        {
-            id: utilService.makeId(),
-            type: "NoteVideo",
-            isPinned: true,
-            title: "Music",
-            info: {
-                url: "https://www.youtube.com/embed/1lFI8sYN1Rc",
+            {
+                id: utilService.makeId(),
+                type: "NoteVideo",
+                isPinned: true,
+                title: "Music",
+                info: {
+                    url: "https://www.youtube.com/embed/tgbNymZ7vqY",
 
+                },
+                style: {
+                    backgroundColor: "#00d"
+                }
             },
-            style: {
-                backgroundColor: "#00d"
+            {
+                id: utilService.makeId(),
+                type: "NoteTodos",
+                isPinned: true,
+                title: "Todo",
+                info: {
+                    todos: [
+                        { txt: "Implement keep app", doneAt: null },
+                        { txt: "Implement mail app", doneAt: 187111111 }
+                    ]
+                },
+                style: {
+                    backgroundColor: "#00d"
+                }
             }
-        },
-        {
-            id: utilService.makeId(),
-            type: "NoteTodos",
-            isPinned: true,
-            title: "Todo",
-            info: {
-                todos: [
-                    { txt: "Implement keep app", doneAt: null },
-                    { txt: "Implement mail app", doneAt: 187111111 }
-                ]
-            },
-            style: {
-                backgroundColor: "#00d"
-            }
-        }
-    ];
+        ];
+    }
 
     gNotes = notes;
     _saveNotesToStorage();

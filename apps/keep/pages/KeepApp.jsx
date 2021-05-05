@@ -1,9 +1,9 @@
 const Router = ReactRouterDOM.HashRouter
-const { Route, Switch } = ReactRouterDOM
+const { Route, Switch, Link } = ReactRouterDOM
 import { noteService } from '../services/note.service.js'
-import {NoteFilter} from '../cmps/NoteFilter.jsx'
-import {NoteList} from '../cmps/NoteList.jsx'
-import {NoteAdd} from '../cmps/NoteAdd.jsx'
+import { NoteFilter } from '../cmps/NoteFilter.jsx'
+import { NoteList } from '../cmps/NoteList.jsx'
+import { NoteAdd } from '../cmps/NoteAdd.jsx'
 
 export class KeepApp extends React.Component {
     state = {
@@ -27,10 +27,14 @@ export class KeepApp extends React.Component {
         this.setState({ filterBy }, this.loadNotes)
     }
 
-    setSelectedNote = (note) => {
-        this.setState({ selectedNote: note })
+    onAddNote = () => {
+        this.loadNotes();
     }
 
+    onRemoveNote = (id) => {
+        noteService.removeNote(id);
+        this.loadNotes();
+    }
 
     render() {
         // console.log('RENDER!', this.state.books);
@@ -40,9 +44,10 @@ export class KeepApp extends React.Component {
         return (
             <div>
                 <section className="container">
-                    <NoteAdd/>
+                    <NoteAdd onAddNote={this.onAddNote}/>
+
                     {/* <NoteFilter onSetFilter={this.onSetFilter} /> */}
-                    <NoteList notes={notes}/>
+                    <NoteList notes={notes} onRemoveNote={this.onRemoveNote}/>
                 </section>
             </div>
         )
