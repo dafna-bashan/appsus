@@ -1,4 +1,5 @@
 @import '../../apps/mail/assets/cmps-css/EmailPreview.css';
+@import '../../apps/mail/assets/cmps-css/EmailDetails.css';
 @import './app-header.css';
 @import './app-footer.css';
 * {
@@ -8,7 +9,6 @@
 body {
     margin: 0;
 }
-
 
 /* FONTS */
 
@@ -27,7 +27,6 @@ body {
     src: url(../fonts/roboto/Roboto-Bold.ttf);
 }
 
-
 /* GENERAL */
 
 html {
@@ -36,12 +35,7 @@ html {
     height: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     margin: 0;
     /* font-weight: normal; */
 }
@@ -52,9 +46,31 @@ button {
     cursor: pointer;
 }
 
-label,
-input {
+label, input {
     cursor: pointer;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+
 }
 
 
@@ -64,7 +80,6 @@ input {
     max-width: 350px;
     margin: 0 auto;
 }
-
 
 /* flex helpers */
 
@@ -96,7 +111,6 @@ input {
     display: none;
 }
 
-
 /* list helpers */
 
 .clean-list {
@@ -104,7 +118,6 @@ input {
     margin: 0;
     padding: 0;
 }
-
 
 /* COMPONENTS */
 
@@ -127,9 +140,7 @@ input {
     flex: 1;
 }
 
-
 /* MEDIA QUERIES */
-
 
 /* SMALL */
 
@@ -139,7 +150,6 @@ input {
     }
 }
 
-
 /* MEDIUM */
 
 @media (min-width: 700px) {
@@ -147,7 +157,6 @@ input {
         max-width: 660px;
     }
 }
-
 
 /* LARGE */
 

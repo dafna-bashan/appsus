@@ -9,6 +9,7 @@ export class EmailApp extends React.Component {
         emails: null
     }
     componentDidMount() {
+        console.log('didMoint in EmailApp')
         this.loadEmails()
     }
     // componentDidUpdate() {
@@ -30,7 +31,7 @@ export class EmailApp extends React.Component {
     // }
     render() {
         console.log('RENDER im EmailApp!', this.state.emails);
-        const { emails, selectedEmailmail } = this.state
+        const { emails } = this.state
         if (!emails) return <div>Loading...</div>
         return (
             <div>

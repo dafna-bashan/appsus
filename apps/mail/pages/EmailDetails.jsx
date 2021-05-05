@@ -13,11 +13,11 @@ export class EmailDetails extends React.Component {
         this.loadEmail()
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
-            this.loadEmail()
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
+    //         this.loadEmail()
+    //     }
+    // }
 
     loadEmail() {
         const id = this.props.match.params.mailId
@@ -32,21 +32,27 @@ export class EmailDetails extends React.Component {
         console.log(this.state.email)
     }
 
-    // onDeleteEmail = () => {
-    //     carService.deleteEmail(this.state.email.id)
-    //         .then(() => {
-    //             this.props.history.push('/mail')
-    //         })
-    // }
+    onDeleteEmail = () => {
+        console.log('on delete email')
+        emailService.deleteEmail(this.state.email.id)
+            .then(() => {
+                this.props.history.push('/mail')
+            })
+    }
+
+ 
 
     render() {
         console.log('render in email details')
         const { email } = this.state
         if (!email) return <div>Loading...</div>
         return (
-            <div>
+            <div className="email-details">
                 <h2>all the mail</h2>
-                <p>({email.body})</p>
+                <p>{email.sentAt}</p>
+                <p>{email.body}</p>
+                <button onClick={this.onDeleteEmail}>Delete Email</button>
+                {/* <button onClick={this.onTest}>test</button> */}
                 {/* <button onClick={() => this.props.history.push('/mail')} > Go back</button> */}
 
             </div>

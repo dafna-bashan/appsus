@@ -4,7 +4,8 @@ import { utilService } from '../../../services/util-service.js'
 export const emailService = {
     query,
     getEmailById,
-    composeMail
+    composeMail,
+    deleteEmail
     // getNextBookId
 }
 
@@ -38,21 +39,21 @@ function _createMails() {
                 subject: 'Wassap?',
                 body: 'Pick up!',
                 isRead: false,
-                sentAt: 1551133930594
+                sentAt: (new Date(1551133930594)).getTime()
             },
             {
                 id: utilService.makeId(),
                 subject: 'hello all',
                 body: 'hello nice to meat you!',
                 isRead: true,
-                sentAt: 1551133930598
+                sentAt: (new Date(1551133930594)).getTime()
             },
             {
                 id: utilService.makeId(),
                 subject: 'Wassap?',
                 body: utilService.makeLorem(20),
                 isRead: false,
-                sentAt: 1551133930700
+                sentAt: (new Date(1551133930594)).getTime()
             }
         ]
     }
@@ -67,6 +68,18 @@ function composeMail(mailToCompose) {
     _saveMailsToStorage();
     return Promise.resolve()
 }
+
+function deleteEmail(emailId) {
+    var emailIdx = gMails.findIndex(function (email) {
+        return emailId === email.id
+    })
+    gMails.splice(emailIdx, 1)
+    _saveMailsToStorage();
+
+    return Promise.resolve()
+}
+
+
 
 function _saveMailsToStorage() {
     console.log('_saveMailsToStorage()')

@@ -11,9 +11,11 @@ export class EmailCompose extends React.Component {
             from: '',
             to: '',
             body: '',
-            readAt: new Date()
+            readAt: Date.now()
         }
     }
+
+
 
     handleChange = (ev) => {
         ev.preventDefault()
@@ -26,22 +28,21 @@ export class EmailCompose extends React.Component {
             }
         }))
     }
+
     onAddMail = (ev) => {
         ev.preventDefault()
         console.log('onAddMail')
         // const mailId = this.props.match.params.mailId;
+        console.log('onAddMail state mail',this.state.mail)
         emailService.composeMail(this.state.mail)
-            .then(this.closeModal)
-            // .catch(err => console.log(err, 'error on submit'))
+
+            // .then(() => {
+            //     this.props.history.push('/mail')
+            // })
     }
 
-    // .then((books) => {
-    //     this.setState((prevState) => ({ ...prevState.search, results: books }));
 
-    closeModal = () => {
-        // const mailId = this.props.match.params.mailId;
-        this.props.history.push(`/mail`)
-    }
+
 
     render() {
         return (
@@ -49,7 +50,7 @@ export class EmailCompose extends React.Component {
                 {/* <label htmlFor="name">Subject</label> */}
                 <input type="text" id="subject" name="subject" placeholder="Subject" onChange={this.handleChange} required />
                 <div>
-                    <textarea name="txt" id="txt" cols="30" rows="3" onChange={this.handleChange} ></textarea>
+                    <textarea name="body" id="body" cols="30" rows="3" onChange={this.handleChange} ></textarea>
                 </div>
                 <button>Send</button>
             </form>
