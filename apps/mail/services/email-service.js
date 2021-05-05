@@ -3,18 +3,15 @@ import { utilService } from '../../../services/util-service.js'
 
 export const emailService = {
     query,
-    getEmailById
+    getEmailById,
+    composeMail,
+    deleteEmail
     // getNextBookId
 }
 
-const KEY = 'mails';
+const KEY = 'mails_key';
 
 var gMails
-// var gEmails = [
-//     { id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-//     { id: utilService.makeId() , subject: 'hello all', body: 'hello nice to meat you!', isRead: true, sentAt: 1551133930598 },
-//     { id: utilService.makeId() ,subject: 'Wassap?', body: utilService.makeLorem(20), isRead: false, sentAt: 1551133930700 }
-// ]
 
 
 
@@ -22,7 +19,6 @@ function query() {
     _createMails();
     return Promise.resolve(gMails);
 }
-
 
 
 function getEmailById(emailId) {
@@ -38,20 +34,56 @@ function _createMails() {
     var mails = storageService.loadFromStorage(KEY)
     if (!mails || !mails.length) {
         mails = [
-            { id: utilService.makeId(), subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-            { id: utilService.makeId(), subject: 'hello all', body: 'hello nice to meat you!', isRead: true, sentAt: 1551133930598 },
-            { id: utilService.makeId(), subject: 'Wassap?', body: utilService.makeLorem(20), isRead: false, sentAt: 1551133930700 }
+            {
+                id: utilService.makeId(),
+                subject: 'Wassap?',
+                body: 'Pick up!',
+                isRead: false,
+                sentAt: (new Date(1551133930594)).getTime()
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'hello all',
+                body: 'hello nice to meat you!',
+                isRead: true,
+                sentAt: (new Date(1551133930594)).getTime()
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Wassap?',
+                body: utilService.makeLorem(20),
+                isRead: false,
+                sentAt: (new Date(1551133930594)).getTime()
+            }
         ]
-        _saveMailsToStorage();
     }
     gMails = mails;
-
+    _saveMailsToStorage();
 }
 
-function createMail(subject,body){
-
+function composeMail(mailToCompose) {
+    console.log('composeMail(mailToCompose)');
+    console.log('mailToCompose', mailToCompose)
+    gMails.unshift(mailToCompose)
+    _saveMailsToStorage();
+    return Promise.resolve()
 }
+
+function deleteEmail(emailId) {
+    var emailIdx = gMails.findIndex(function (email) {
+        return emailId === email.id
+    })
+    gMails.splice(emailIdx, 1)
+    _saveMailsToStorage();
+
+    return Promise.resolve()
+}
+
+
 
 function _saveMailsToStorage() {
+    console.log('_saveMailsToStorage()')
     storageService.saveToStorage(KEY, gMails)
+    console.log(gMails);
 }
+

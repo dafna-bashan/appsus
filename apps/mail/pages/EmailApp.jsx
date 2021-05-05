@@ -9,8 +9,12 @@ export class EmailApp extends React.Component {
         emails: null
     }
     componentDidMount() {
+        console.log('didMoint in EmailApp')
         this.loadEmails()
     }
+    // componentDidUpdate() {
+    //     this.loadEmails()
+    // }
 
     loadEmails() {
         emailService.query().then((emails) => {
@@ -27,14 +31,14 @@ export class EmailApp extends React.Component {
     // }
     render() {
         console.log('RENDER im EmailApp!', this.state.emails);
-        const { emails, selectedEmailmail } = this.state
+        const { emails } = this.state
         if (!emails) return <div>Loading...</div>
         return (
             <div>
                 <section className="container">
                     <h1>Your emails</h1>
                     <EmailList emails={emails} />
-                    {/* <EmailCompose /> */}
+                    <EmailCompose />
                     {/* {!selectedEmail && <React.Fragment>
                         <BookFilter onSetFilter={this.onSetFilter} /> //
 

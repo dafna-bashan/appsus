@@ -1,17 +1,24 @@
-.email-preview{
+.mail-preview {
     color: black;
     margin: 10px;
-    
 }
 
-.read{
+.read {
     background-color: rgb(224, 222, 222);
 }
 
-a:link { text-decoration: none; }
+a:link {
+    text-decoration: none;
+}
 
-a:visited { text-decoration: none; }
+a:visited {
+    text-decoration: none;
+}
 
-a:hover { text-decoration: none; }
+a:hover {
+    text-decoration: none;
+}
 
-a:active { text-decoration: none; }
+a:active {
+    text-decoration: none;
+}
