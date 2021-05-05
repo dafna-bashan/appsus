@@ -15,8 +15,6 @@ export class EmailCompose extends React.Component {
         }
     }
 
-
-
     handleChange = (ev) => {
         ev.preventDefault()
         const field = ev.target.name
@@ -30,23 +28,16 @@ export class EmailCompose extends React.Component {
     }
 
     onAddMail = (ev) => {
+        console.log('onAddMail in EmailCompose')
         ev.preventDefault()
-        console.log('onAddMail')
-        // const mailId = this.props.match.params.mailId;
-        console.log('onAddMail state mail',this.state.mail)
-        emailService.composeMail(this.state.mail)
+        this.props.onAddMail(this.state.mail)
 
-            // .then(() => {
-            //     this.props.history.push('/mail')
-            // })
     }
-
-
 
 
     render() {
         return (
-            <form className="review-add" onSubmit={this.onAddMail}>
+            <form className="email-compose" onSubmit={this.onAddMail}>
                 {/* <label htmlFor="name">Subject</label> */}
                 <input type="text" id="subject" name="subject" placeholder="Subject" onChange={this.handleChange} required />
                 <div>

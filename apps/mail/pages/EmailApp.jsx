@@ -1,12 +1,22 @@
 const { Link } = ReactRouterDOM
 
+import { utilService } from '../../../services/util-service.js'
 import { emailService } from '../services/email-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
-import { EmailCompose } from '../cmps/EmailCompose.jsx'
+import { EmailCompose } from '../pages/EmailCompose.jsx'
 
 export class EmailApp extends React.Component {
     state = {
-        emails: null
+        emails: null,
+        isCompose: false,
+        mailToCompose: {
+            id: utilService.makeId(),
+            subject: '',
+            from: '',
+            to: '',
+            body: '',
+            readAt: Date.now()
+        }
     }
     componentDidMount() {
         console.log('didMoint in EmailApp')
@@ -20,6 +30,24 @@ export class EmailApp extends React.Component {
         emailService.query().then((emails) => {
             this.setState({ emails })
         })
+    }
+
+    onCompose = () => {
+        console.log('hello')
+        this.setState({ isCompose: true })
+        console.log('isCompose:', isCompose)
+    }
+
+    onAddMail = (mailToCompose) => {
+        // ev.preventDefault()
+        console.log('onAddMail')
+        console.log('onAddMail state mail', this.state.mailToCompose)
+        emailService.composeMail(mailToCompose)
+                .then(emails => {this.setState({ emails })} )
+                .then(emails => {this.setState({ isCompose: false })} )
+                
+        //     this.props.history.push('/mail')
+        // })
     }
 
     // onSetFilter = (filterBy) => {
@@ -38,15 +66,12 @@ export class EmailApp extends React.Component {
                 <section className="container">
                     <h1>Your emails</h1>
                     <EmailList emails={emails} />
-                    <EmailCompose />
-                    {/* {!selectedEmail && <React.Fragment>
-                        <BookFilter onSetFilter={this.onSetFilter} /> //
+                    <button onClick={() => {
+                        this.setState({ isCompose: true })
+                    }}>Compose new mail</button>
+                    {this.state.isCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
+                    {/* {this.state.isCompose && <Link to={`/mail/compose`} onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}>link</Link>} */}
 
-                        {<BookList emails={emails} setSelectedEmails={this.setSelectedEmail} />}
-
-                    </React.Fragment>} */}
-                    {/* {selectedEmail &&
-                        <BookDetails className="email-details" book={selectedEmail} goBack={() => this.setSelectedEmail(null)} />} */}
                 </section>
             </div>
         )

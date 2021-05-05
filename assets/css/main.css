@@ -1,5 +1,7 @@
 @import '../../apps/mail/assets/cmps-css/EmailPreview.css';
 @import '../../apps/mail/assets/cmps-css/EmailDetails.css';
+@import '../../apps/mail/assets/pages-css/EmailApp.css';
+@import '../../apps/mail/assets/pages-css/EmailCompose.css';
 @import './app-header.css';
 @import './app-footer.css';
 @import '../../apps/keep/assets/css/note-add.css';
@@ -28,15 +30,12 @@ body {
     src: url(../fonts/roboto/Roboto-Bold.ttf);
 }
 
-<<<<<<< HEAD
 @font-face {
     font-family: brands;
     src: url(../fonts/awesome/fa-brands-400.ttf);
 }
 
 
-=======
->>>>>>> 6ca65980e7292a13a943217b7e1468a8ea8fbe2b
 /* GENERAL */
 
 html {

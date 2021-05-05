@@ -66,7 +66,7 @@ function composeMail(mailToCompose) {
     console.log('mailToCompose', mailToCompose)
     gMails.unshift(mailToCompose)
     _saveMailsToStorage();
-    return Promise.resolve()
+    return Promise.resolve(gMails)
 }
 
 function deleteEmail(emailId) {
