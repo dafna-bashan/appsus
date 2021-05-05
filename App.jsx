@@ -5,9 +5,14 @@ import { AppFooter } from './cmps/AppFooter.jsx';
 import { Home } from './pages/Home.jsx';
 import { KeepApp } from './apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './apps/books/pages/BookApp.jsx';
-import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
+import { EmailCompose } from './apps/mail/pages/EmailCompose.jsx';
 import { EmailDetails } from './apps/mail/pages/EmailDetails.jsx';
+<<<<<<< HEAD
 import {NoteEdit} from './apps/keep/cmps/NoteEdit.jsx';
+=======
+import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
+import { AppFooter } from './cmps/AppFooter.jsx';
+>>>>>>> f779936270f5c9c06d31485661c44c28bb525d8c
 
 export function App() {
     return (
@@ -16,14 +21,18 @@ export function App() {
                 <AppHeader />
                 <main className="main-content">
                     <Switch>
+<<<<<<< HEAD
                         {/* <Route component={EmailApp} path="/mail/add" /> */}
                         <Route component={NoteEdit} path="/keep/edit/:noteId?" />
+=======
+                        <Route component={EmailCompose} path="/mail/:compose" />
+>>>>>>> f779936270f5c9c06d31485661c44c28bb525d8c
                         <Route component={EmailDetails} path="/mail/:mailId" />
+                        <Route component={EmailApp} path="/mail" />
                         <Route component={BookDetails} path="/book/:bookId" />
                         <Route component={BookAdd} path="/book/add" />
                         <Route component={BookApp} path="/book" />
                         <Route component={KeepApp} path="/keep" />
-                        <Route component={EmailApp} path="/mail" />
                         <Route component={Home} path="/" />
                         {/* If we want to send props to a route: */}
                         {/* <Route render={(props)=> <AboutUs {...props} name="popo"/>} path="/about" /> */}

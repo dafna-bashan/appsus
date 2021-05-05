@@ -13,10 +13,16 @@ const KEY = 'mails_key';
 
 var gMails
 
-
-
-function query() {
+function query(filterBy) {
     _createMails();
+    // if (filterBy){
+    //     var {read , unRead } = filterBy
+    //     const filteredEmails = gMails.filter(mail => {
+    //         return mail.isRead
+    //     })
+    //     return Promise.resolve(filteredEmails)
+    // }
+    
     return Promise.resolve(gMails);
 }
 
@@ -66,7 +72,7 @@ function composeMail(mailToCompose) {
     console.log('mailToCompose', mailToCompose)
     gMails.unshift(mailToCompose)
     _saveMailsToStorage();
-    return Promise.resolve()
+    return Promise.resolve(gMails)
 }
 
 function deleteEmail(emailId) {
