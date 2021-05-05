@@ -9,7 +9,6 @@ import { EmailCompose } from './apps/mail/pages/EmailCompose.jsx';
 import { EmailDetails } from './apps/mail/pages/EmailDetails.jsx';
 import {NoteEdit} from './apps/keep/cmps/NoteEdit.jsx';
 import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
-import { AppFooter } from './cmps/AppFooter.jsx';
 
 export function App() {
     return (
@@ -18,12 +17,9 @@ export function App() {
                 <AppHeader />
                 <main className="main-content">
                     <Switch>
-<<<<<<< HEAD
                         {/* <Route component={EmailApp} path="/mail/add" /> */}
                         <Route component={NoteEdit} path="/keep/edit/:noteId?" />
-=======
                         <Route component={EmailCompose} path="/mail/:compose" />
->>>>>>> f779936270f5c9c06d31485661c44c28bb525d8c
                         <Route component={EmailDetails} path="/mail/:mailId" />
                         <Route component={EmailApp} path="/mail" />
                         <Route component={BookDetails} path="/book/:bookId" />
