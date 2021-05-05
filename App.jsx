@@ -6,28 +6,29 @@ import { KeepApp } from './apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './apps/books/pages/BookApp.jsx';
 import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
 import { EmailDetails } from './apps/mail/pages/EmailDetails.jsx';
+import { AppFooter } from './cmps/AppFooter.jsx';
 
 export function App() {
     return (
         <Router>
-            <AppHeader />
-            <main>
-                <Switch>
-                    {/* <Route component={EmailApp} path="/mail/add" /> */}
-                    <Route component={EmailDetails} path="/mail/:mailId" />
-                    <Route component={BookDetails} path="/book/:bookId" />
-                    <Route component={BookAdd} path="/book/add" />
-                    <Route component={BookApp} path="/book" />
-                    <Route component={KeepApp} path="/keep" />
-                    <Route component={EmailApp} path="/mail" />
-                    <Route component={Home} path="/" />
-                    {/* If we want to send props to a route: */}
-                    {/* <Route render={(props)=> <AboutUs {...props} name="popo"/>} path="/about" /> */}
-                </Switch>
-            </main>
-            <footer className="app-footer">
-                ☕ coffeerights &copy; ☕
-            </footer>
+            <div className="app-container">
+                <AppHeader />
+                <main className="main-content">
+                    <Switch>
+                        {/* <Route component={EmailApp} path="/mail/add" /> */}
+                        <Route component={EmailDetails} path="/mail/:mailId" />
+                        <Route component={BookDetails} path="/book/:bookId" />
+                        <Route component={BookAdd} path="/book/add" />
+                        <Route component={BookApp} path="/book" />
+                        <Route component={KeepApp} path="/keep" />
+                        <Route component={EmailApp} path="/mail" />
+                        <Route component={Home} path="/" />
+                        {/* If we want to send props to a route: */}
+                        {/* <Route render={(props)=> <AboutUs {...props} name="popo"/>} path="/about" /> */}
+                    </Switch>
+                </main>
+                <AppFooter />
+            </div>
         </Router>
     )
 }
