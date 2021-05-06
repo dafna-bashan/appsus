@@ -1,6 +1,6 @@
 import { bookService } from "../services/book-service.js";
 import {eventBusService} from '../../../services/event-bus-service.js';
-import {SearchList} from './SearchList.jsx';
+import {SearchList} from '../cmps/SearchList.jsx';
 
 export class BookAdd extends React.Component {
   state = {
@@ -30,7 +30,7 @@ addGoogleBook = (book)=>{
     if (!bookService.addGoogleBook(book)){
         eventBusService.showUserMsg(`The book ${book.volumeInfo.title} alredy exist!`, 'error', book.id)
     }else {
-        bookService.addGoogleBook(book);
+        // bookService.addGoogleBook(book);
         eventBusService.showUserMsg(`The book ${book.volumeInfo.title} was added!`, 'sucsses', book.id)
     }
 }

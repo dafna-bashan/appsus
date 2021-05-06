@@ -8,12 +8,12 @@ export class NoteAdd extends React.Component {
 
     state = {
         note: {
+            id: '',
             type: "NoteTxt",
-            isPinned: false,
-            title: '',
+            isPinned: true,
+            title: 'Coding',
             info: {
-                url: "https://i.pinimg.com/564x/9a/b0/7b/9ab07b7ae73e44a806c468e6fd174149.jpg",
-
+                txt: "I love coding!"
             },
             style: {
                 backgroundColor: "#00d"
@@ -29,6 +29,7 @@ export class NoteAdd extends React.Component {
     }
 
     handleChange = (ev) => {
+        ev.preventDefault();
         const field = ev.target.name;
         const inputValue = ev.target.type === "number" ? +ev.target.value : ev.target.value;
         let value = inputValue;
@@ -36,7 +37,9 @@ export class NoteAdd extends React.Component {
             switch (this.state.note.type) {
                 case 'NoteTxt': value = { txt: inputValue };
                     break;
-                case 'NoteImg' || 'NoteVideo': value = { url: inputValue };
+                case 'NoteImg': value = { url: inputValue };
+                    break;
+                case 'NoteVideo': value = { url: inputValue };
                     break;
                 case 'NoteTodos':
                     let todosArr = inputValue.split(',');
@@ -46,6 +49,7 @@ export class NoteAdd extends React.Component {
             }
         }
         this.setState((prevState) => ({
+            isAdding: true,
             note: {
                 ...prevState.note,
                 [field]: value,
@@ -54,17 +58,60 @@ export class NoteAdd extends React.Component {
         ));
     };
 
-    AddNote = (ev) => {
-        ev.preventDefault();
-        console.log(this.state);
-        noteService.createNote(this.state).then(() => {
-            this.props.onAddNote()
-        });
+    handleTypeChange = (noteType) => {
+        this.setState((prevState) => ({
+            note: {
+                ...prevState.note,
+                type: noteType,
+            }
+        }
+        ));
+    }
+
+    // AddNote = (ev) => {
+    //     ev.preventDefault();
+    //     console.log(ev);
+    //     console.log(this.state);
+    //     noteService.createNote(this.state)
+    //         .then(() => { this.props.onAddNote() })
+    //     // .then(() => {this.setState((prevState) => ({
+    //     //     isAdding: false,
+    //     //     note: {}
+    //     // }
+
+
+    //     // })
+    //     // ));
+    //     // });
+    // }
+
+    addNote = (ev) => {
+        ev.preventDefault()
+        console.log(ev);
+        noteService.createNote(this.state)
+            .then(() => { this.props.onAddNote() })
+            .then(() => {
+                this.setState({
+                    note: {
+                        id: '',
+                        type: "NoteTxt",
+                        isPinned: false,
+                        title: '',
+                        info: {
+                            txt: ""
+                        },
+                        style: {
+                            backgroundColor: "#00d"
+                        }
+                    }
+                })
+            })
+            console.log(this.state);
     }
 
     get placeholder() {
         console.log(this.state.note.type);
-        switch (this.state.noteType) {
+        switch (this.state.note.type) {
             case 'NoteTxt': return 'Enter text';
             case 'NoteImg': return 'Enter image URL';
             case 'NoteTodos': return 'Enter comma separated list';
@@ -76,14 +123,14 @@ export class NoteAdd extends React.Component {
     render() {
         return (
             <section>
-                <form onSubmit={this.AddNote}>
-                    <input type="text" name="title" id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef}/>
-                    <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange}></textarea>
+                <form onSubmit={this.addNote}>
+                    <input type="text" name="title" id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} required />
+                    <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} required></textarea>
                     {/* <input type="text" name="info" id="info"    /> */}
-                    <Icons noteType="NoteTxt" handleChange={this.handleChange} />
-                    <Icons noteType="NoteTodos" handleChange={this.handleChange} />
-                    <Icons noteType="NoteImg" handleChange={this.handleChange} />
-                    <Icons noteType="NoteVideo" handleChange={this.handleChange} />
+                    <Icons noteType="NoteTxt" handleChange={this.handleTypeChange} />
+                    <Icons noteType="NoteTodos" handleChange={this.handleTypeChange} />
+                    <Icons noteType="NoteImg" handleChange={this.handleTypeChange} />
+                    <Icons noteType="NoteVideo" handleChange={this.handleTypeChange} />
                     {/* <button onClick={this.handleChange}><Icons noteType="NoteAudio"/></button> */}
                     <button>Add</button>
                 </form>

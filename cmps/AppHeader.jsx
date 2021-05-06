@@ -1,4 +1,4 @@
-import { eventBusService } from '../../../services/event-bus-service.js'
+import { eventBusService } from '../services/event-bus-service.js'
 import { UserMsg } from './UserMsg.jsx';
 
 const { NavLink, withRouter } = ReactRouterDOM
@@ -27,7 +27,7 @@ class _AppHeader extends React.Component {
     return (
       <header className="main-header">
       <nav className="nav-container container flex align-center space-between">
-        <UserMsg/>
+        {/* <UserMsg/> */}
         <div className="logo">AppSus</div>
         <ul className="main-nav flex clean-list justify-content align-center">
           <li className="flex justify-center align-center"><NavLink exact to="/">Home</NavLink></li>

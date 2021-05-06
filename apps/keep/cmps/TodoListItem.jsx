@@ -23,13 +23,14 @@ export class TodoListItem extends React.Component {
 
 
     render() {
-        const {todo, idx} = this.props;
-        const name = `list-item-${idx}`;
+        const {todo, id, idx} = this.props;
+        const name = `list-item-${id}-${idx}`;
+        // console.log(name);
         return (
             <section>
-                {todo.title}
-                {todo.doneAt && <input type="checkbox" id={name} name={name} defaultChecked onChange={this.handleChange}></input>}
-                {!todo.doneAt && <input type="checkbox" id={name} name={name} onChange={this.handleChange}></input>}
+                
+                {todo.doneAt && <span><del>{todo.title}</del> <input type="checkbox" id={name} name={name} defaultChecked onChange={this.handleChange}></input></span>}
+                {!todo.doneAt && <span>{todo.title} <input type="checkbox" id={name} name={name} onChange={this.handleChange}></input></span>}
                 <label htmlFor={name}>{todo.txt}</label>
             </section>
         )

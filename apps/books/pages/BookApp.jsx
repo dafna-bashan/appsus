@@ -1,8 +1,8 @@
+const { Link } = ReactRouterDOM
 import { bookService } from '../services/book-service.js'
 import { BookList } from '../cmps/BookList.jsx'
 import { BookFilter } from '../cmps/BookFilter.jsx'
 import { BookDetails } from './BookDetails.jsx'
-import {BookAdd} from '../cmps/BookAdd.jsx'
 
 export class BookApp extends React.Component {
     state = {
@@ -16,7 +16,7 @@ export class BookApp extends React.Component {
 
     loadBooks() {
         bookService.query(this.state.filterBy).then((books) => {
-            console.log(books);
+            // console.log(books);
             this.setState({ books })
         })
     }
@@ -38,6 +38,7 @@ export class BookApp extends React.Component {
             <div>
             <section className = "container">
                 {!selectedBook && <React.Fragment>
+                    <Link to="/book/add">Add book</Link>
                     <BookFilter onSetFilter={this.onSetFilter} />
                     <BookList books={books} setSelectedBook={this.setSelectedBook} />
                 </React.Fragment>}

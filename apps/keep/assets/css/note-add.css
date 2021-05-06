@@ -3,11 +3,22 @@ svg {
     margin: 0 5px;
 }
 
-.note-img img {
+.note-preview img {
     width: 150px;
 }
 
 iframe {
     width: 200px;
     height: 112.5px;
+}
+
+.note-preview {
+    background-color: rgb(214, 214, 214);
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.icons {
+    display: inline-block;
 }

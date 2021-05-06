@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 import { utilService } from '../../../services/util-service.js'
 import { emailService } from '../services/email-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
-import { EmailFilter } from '../cmps/EmailFilter.JSX'
+import { EmailFilter } from '../cmps/EmailFilter.jsx'
 import { EmailCompose } from '../pages/EmailCompose.jsx'
 
 export class EmailApp extends React.Component {
