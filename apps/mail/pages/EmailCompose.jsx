@@ -39,7 +39,6 @@ export class EmailCompose extends React.Component {
     render() {
         return (
             <form className="email-compose" onSubmit={this.onAddMail}>
-                {/* <label htmlFor="name">Subject</label> */}
                 <input type="text" id="subject" name="subject" placeholder="Subject" onChange={this.handleChange} required />
                 <div>
                     <textarea name="body" id="body" cols="30" rows="3" onChange={this.handleChange} ></textarea>
