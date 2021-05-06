@@ -17,6 +17,7 @@ export class EmailCompose extends React.Component {
 
     handleChange = (ev) => {
         ev.preventDefault()
+        console.log('hendle change in email compose')
         const field = ev.target.name
         const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
         this.setState(prevState => ({

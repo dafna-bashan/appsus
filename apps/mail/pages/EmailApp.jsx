@@ -48,9 +48,9 @@ export class EmailApp extends React.Component {
         console.log('onAddMail')
         console.log('onAddMail state mail', this.state.mailToCompose)
         emailService.composeMail(mailToCompose)
-                .then(emails => {this.setState({ emails })} )
-                .then(emails => {this.setState({ isCompose: false })} )
-                
+            .then(emails => { this.setState({ emails }) })
+            .then(emails => { this.setState({ isCompose: false }) })
+
         //     this.props.history.push('/mail')
         // })
     }
@@ -69,15 +69,14 @@ export class EmailApp extends React.Component {
         return (
             <div>
                 <section className="container">
-                <EmailFilter onSetFilter={this.onSetFilter} />
+                    <EmailFilter onSetFilter={this.onSetFilter} />
                     <h1>Your emails</h1>
                     <EmailList emails={emails} />
                     <button onClick={() => {
                         this.setState({ isCompose: true })
                     }}>Compose new mail</button>
-                    {this.state.isCompose && <Link to="/mail/:compose"><EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}/></Link> }
+                    {this.state.isCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
                     {/* {this.state.isCompose && <Link to={`/mail/compose`} onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}>link</Link>} */}
-
                 </section>
             </div>
         )

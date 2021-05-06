@@ -1,24 +1,31 @@
-.mail-preview {
-    color: black;
+.email-preview {
+    color: #202124;
     margin: 10px;
+    font-family: roboto-regular,Helvetica,Arial,sans-serif;
+    font-size: .875rem;
+    letter-spacing: .2px;
 }
 
-.read {
-    background-color: rgb(224, 222, 222);
+.unread {
+    font-family: roboto-bold,Helvetica,Arial,sans-serif;
 }
 
-a:link {
-    text-decoration: none;
+.read{
+    background-color: rgba(242,245,245,0.8);
+    font-family: roboto-regular,Helvetica,Arial,sans-serif;
 }
 
-a:visited {
-    text-decoration: none;
+.delete-mail{
+    content: url("../icon/delete_mail.png");
 }
 
-a:hover {
-    text-decoration: none;
+.img-read{
+    content: url("../icon/mark_unread_mail.png");
+    height: 24px;
 }
 
-a:active {
-    text-decoration: none;
+.img-unread{
+    content: url("../icon/mark_read_mail.png");
+    height: 24px;
+
 }
