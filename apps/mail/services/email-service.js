@@ -15,14 +15,23 @@ var gMails
 
 function query(filterBy) {
     _createMails();
-    // if (filterBy){
-    //     var {read , unRead } = filterBy
-    //     const filteredEmails = gMails.filter(mail => {
-    //         return mail.isRead
-    //     })
-    //     return Promise.resolve(filteredEmails)
-    // }
-    
+    console.log('hello')
+    console.log(filterBy)
+    if (filterBy !== 'All') {
+        var filteredEmails
+        console.log('hello!')
+        if (filterBy ==='Read') {
+            filteredEmails = gMails.filter(mail => {
+                return mail.isRead
+            })
+        }
+        else {
+            filteredEmails = gMails.filter(mail => {
+                return !mail.isRead
+            })
+        }
+        return Promise.resolve(filteredEmails)
+    }
     return Promise.resolve(gMails);
 }
 

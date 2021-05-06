@@ -19,17 +19,15 @@ export class EmailApp extends React.Component {
             readAt: Date.now()
         },
         filterBy: {
-            read: null,
-            unRead: null
+            all: true,
+            read: false,
+            unread: false,
         }
     }
     componentDidMount() {
         console.log('didMoint in EmailApp')
         this.loadEmails()
     }
-    // componentDidUpdate() {
-    //     this.loadEmails()
-    // }
 
     loadEmails() {
         emailService.query(this.state.filterBy).then((emails) => {
@@ -50,7 +48,6 @@ export class EmailApp extends React.Component {
         emailService.composeMail(mailToCompose)
             .then(emails => { this.setState({ emails }) })
             .then(emails => { this.setState({ isCompose: false }) })
-
         //     this.props.history.push('/mail')
         // })
     }
@@ -59,9 +56,6 @@ export class EmailApp extends React.Component {
         this.setState({ filterBy }, this.loadEmails)
     }
 
-    // setSelectedEmails = (email) => {
-    //     this.setState({ selectedBook: email })
-    // }
     render() {
         console.log('RENDER im EmailApp!', this.state.emails);
         const { emails } = this.state

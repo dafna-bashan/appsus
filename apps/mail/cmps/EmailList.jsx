@@ -6,6 +6,7 @@ export function EmailList({ emails }) {
     <React.Fragment>
       <table className="email-list" >
         <tbody>
+          {/* {emails.map(email => <EmailPreview email={email} key={email.id} />)} */}
           {emails.map(email => <EmailPreview email={email} key={email.id} />)}
         </tbody>
       </table>
