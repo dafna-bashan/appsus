@@ -7,18 +7,21 @@ export const noteService = {
     query,
     getNoteById,
     createNote,
-    removeNote
+    removeNote,
+    togglePinNote,
+    saveNote
 }
 
 const KEY = 'notes';
 var gNotes;
+
 _createNotes();
 
 function query(filterBy) {
     if (filterBy) {
         var { title } = filterBy
         const filtereNotes = gNotes.filter(note => {
-            return note.title.includes(title);
+            return note.title.toLowerCase().includes(title);
         })
         return Promise.resolve(filtereNotes);
     }
@@ -34,16 +37,32 @@ function getNoteById(noteId) {
 }
 
 function _saveNotesToStorage() {
-    storageService.saveToStorage(KEY, gNotes)
+    storageService.saveToStorage(KEY, gNotes);
 }
 
+function togglePinNote(selectedNote) {
+    const idx = gNotes.findIndex(note => note.id === selectedNote.id);
+    if (selectedNote.isPinned === true) gNotes[idx].isPinned = false;
+    else gNotes[idx].isPinned = true;
+    console.log(selectedNote);
+    _saveNotesToStorage();
+}
 
 function removeNote(id) {
     console.log(id);
     const idx = gNotes.findIndex(note => note.id === id);
     console.log(idx);
     gNotes.splice(idx, 1);
-    storageService.saveToStorage(KEY, gNotes);
+    _saveNotesToStorage();
+}
+
+function saveNote(noteToUpdate) {
+    var noteIdx = gNotes.findIndex(note => {
+        return note.id === noteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate);
+    _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate);
 }
 
 function createNote(state) {
@@ -111,7 +130,8 @@ function _createNotes() {
                 info: {
                     todos: [
                         { txt: "Implement keep app", doneAt: null },
-                        { txt: "Implement mail app", doneAt: 187111111 }
+                        { txt: "Implement mail app", doneAt: 187111111 },
+                        { txt: "Go to the beach!!!", doneAt: null }
                     ]
                 },
                 style: {

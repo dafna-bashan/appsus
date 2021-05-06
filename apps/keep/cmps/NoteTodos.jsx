@@ -5,13 +5,14 @@ import {TodoListItem} from './TodoListItem.jsx';
 
 export function NoteTodos({ note, onRemoveNote}) {
      const{todos} = note.info
-     const url = `/note/edit/${note.id}`
+     console.log(todos);
+    //  const url = `/note/edit/${note.id}`
 return (
     <section>
-        <Link key={note.id} className="note-preview" to={url}>
+        
         <h4>{note.title}</h4>
-        {todos.map((todo, idx) => <TodoListItem todo={todo} key={idx} idx={idx}/>)}</Link>
-        <button onClick={()=>onRemoveNote(note.id)}>X</button>
+        {todos.map((todo, idx) => <TodoListItem todo={todo} id={note.id} key={idx} idx={idx}/>)}
+        {/* <button onClick={()=>onRemoveNote(note.id)}>X</button> */}
     </section>
 )
 }

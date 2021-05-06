@@ -19,7 +19,7 @@ const url = `/note/edit/${note.id}`
             case 'NoteVideo':
                 return <NoteVideo {...props}/>
             default:
-                return //...some default error view
+                return null//...some default error view
         }
     }
 

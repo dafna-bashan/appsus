@@ -5,9 +5,11 @@ import { AppFooter } from './cmps/AppFooter.jsx';
 import { Home } from './pages/Home.jsx';
 import { KeepApp } from './apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './apps/books/pages/BookApp.jsx';
+import { BookAdd } from './apps/books/pages/BookAdd.jsx';
+import { BookDetails } from './apps/books/pages/BookDetails.jsx';
 import { EmailCompose } from './apps/mail/pages/EmailCompose.jsx';
 import { EmailDetails } from './apps/mail/pages/EmailDetails.jsx';
-import {NoteEdit} from './apps/keep/cmps/NoteEdit.jsx';
+import { NoteEdit } from './apps/keep/cmps/NoteEdit.jsx';
 import { EmailApp } from './apps/mail/pages/EmailApp.jsx';
 
 export function App() {
