@@ -19,9 +19,8 @@ export class EmailApp extends React.Component {
             readAt: Date.now()
         },
         filterBy: {
-            all: true,
-            read: false,
-            unread: false,
+            readFilter: 'All',
+            searchText: null
         }
     }
     componentDidMount() {
@@ -40,6 +39,14 @@ export class EmailApp extends React.Component {
         this.setState({ isCompose: true })
         console.log('isCompose:', isCompose)
     }
+
+    onMarkMail = (mailId) => {
+        console.log('to mark mail as read/unread')
+        emailService.markMail(mailId)
+            .then(emails => { this.setState({ emails }) })
+        console.log(mailId)
+    }
+
 
     onAddMail = (mailToCompose) => {
         // ev.preventDefault()
@@ -65,7 +72,7 @@ export class EmailApp extends React.Component {
                 <section className="container">
                     <EmailFilter onSetFilter={this.onSetFilter} />
                     <h1>Your emails</h1>
-                    <EmailList emails={emails} />
+                    <EmailList emails={emails} onMarkMail={this.onMarkMail} />
                     <button onClick={() => {
                         this.setState({ isCompose: true })
                     }}>Compose new mail</button>

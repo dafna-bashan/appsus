@@ -4,17 +4,12 @@
 export class EmailFilter extends React.Component {
 
     state = {
-        // filterBy: {
-        //     all: true,
-        //     read: false,
-        //     unread: false,
-        // },
-        // value: 'All'
-        filterBy: 'All',
-        isShow: {
-            read: true,
-            unread: true
+
+        filterBy: {
+            readFilter: 'All',
+            searchText: null
         }
+
     }
 
     // inputRef = React.createRef()
@@ -32,15 +27,24 @@ export class EmailFilter extends React.Component {
     }
 
     handleChange = (ev) => {
-        var filterValue = ev.target.value
-        console.log(filterValue)
-        this.setState(({ filterBy }) => (
-            {filterBy: filterValue}
-            ), () => {
-            this.props.onSetFilter(this.state.filterBy)
+        const field = ev.target.name
+        const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
+        this.setState({ filterBy: { ...this.state.filterBy, [field]: value } }, () => {
+          this.props.onSetFilter(this.state.filterBy)
         })
         console.log(this.state.filterBy)
-    }
+      }
+
+    // handleChange = (ev) => {
+    //     var filterValue = ev.target.value
+    //     console.log(filterValue)
+    //     this.setState(({ filterBy }) => (
+    //         { filterBy: filterValue }
+    //     ), () => {
+    //         this.props.onSetFilter(this.state.filterBy)
+    //     })
+    //     console.log(this.state.filterBy)
+    // }
 
     onFilter = (ev) => {
         ev.preventDefault()
@@ -61,12 +65,14 @@ export class EmailFilter extends React.Component {
             <input type="number" id="minSpeed" name="minSpeed" value={minSpeed} onChange={this.handleChange} /> */}
 
                 {/* <select id="myList" onChange={this.setSelectedOption}>  */}
-                <select id="myList" onChange={this.handleChange}>
+                <select id="readFilter" name="readFilter" onChange={this.handleChange}>
                     {/* <option> choose </option> */}
                     <option> All </option>
                     <option> Read </option>
                     <option> Unread </option>
                 </select>
+                <input type="search" name="searchText" id="searchText" placeholder="search mail by text" onChange={this.handleChange} />
+                {/* <button onClick={this.loadResults}>Search</button> */}
                 {/* </div> */}
             </form>
         )

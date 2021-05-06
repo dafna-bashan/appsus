@@ -5,7 +5,8 @@ export const emailService = {
     query,
     getEmailById,
     composeMail,
-    deleteEmail
+    deleteEmail,
+    markMail
     // getNextBookId
 }
 
@@ -15,21 +16,14 @@ var gMails
 
 function query(filterBy) {
     _createMails();
+    var { readFilter, searchText } = filterBy
     console.log('hello')
     console.log(filterBy)
-    if (filterBy !== 'All') {
-        var filteredEmails
-        console.log('hello!')
-        if (filterBy ==='Read') {
+    var filteredEmails
+    if (readFilter !== 'All' || (readFilter && searchText)) {
             filteredEmails = gMails.filter(mail => {
-                return mail.isRead
+                return ((readFilter ==='Read')? mail.isRead : !mail.isRead) && (mail.subject.toLowerCase().includes(searchText.toLowerCase()) || mail.body.toLowerCase().includes(searchText.toLowerCase()))
             })
-        }
-        else {
-            filteredEmails = gMails.filter(mail => {
-                return !mail.isRead
-            })
-        }
         return Promise.resolve(filteredEmails)
     }
     return Promise.resolve(gMails);
@@ -94,7 +88,14 @@ function deleteEmail(emailId) {
     return Promise.resolve()
 }
 
-
+function markMail(emailId){
+    var emailIdx = gMails.findIndex(function (email) {
+        return emailId === email.id
+    })
+    gMails[emailIdx].isRead = !gMails[emailIdx].isRead
+    _saveMailsToStorage();
+    return Promise.resolve(gMails)
+}
 
 function _saveMailsToStorage() {
     console.log('_saveMailsToStorage()')
