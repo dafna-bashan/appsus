@@ -54,8 +54,19 @@ export class NoteAdd extends React.Component {
         ));
     };
 
+    handleTypeChange = (noteType) =>{
+        this.setState((prevState) => ({
+            note: {
+                ...prevState.note,
+                type: noteType,
+            }
+        }
+        ));
+    }
+
     AddNote = (ev) => {
         ev.preventDefault();
+        console.log(ev);
         console.log(this.state);
         noteService.createNote(this.state).then(() => {
             this.props.onAddNote()
@@ -64,7 +75,7 @@ export class NoteAdd extends React.Component {
 
     get placeholder() {
         console.log(this.state.note.type);
-        switch (this.state.noteType) {
+        switch (this.state.note.type) {
             case 'NoteTxt': return 'Enter text';
             case 'NoteImg': return 'Enter image URL';
             case 'NoteTodos': return 'Enter comma separated list';
@@ -80,10 +91,10 @@ export class NoteAdd extends React.Component {
                     <input type="text" name="title" id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef}/>
                     <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange}></textarea>
                     {/* <input type="text" name="info" id="info"    /> */}
-                    <Icons noteType="NoteTxt" handleChange={this.handleChange} />
-                    <Icons noteType="NoteTodos" handleChange={this.handleChange} />
-                    <Icons noteType="NoteImg" handleChange={this.handleChange} />
-                    <Icons noteType="NoteVideo" handleChange={this.handleChange} />
+                    <Icons noteType="NoteTxt" handleChange={this.handleTypeChange} />
+                    <Icons noteType="NoteTodos" handleChange={this.handleTypeChange} />
+                    <Icons noteType="NoteImg" handleChange={this.handleTypeChange} />
+                    <Icons noteType="NoteVideo" handleChange={this.handleTypeChange} />
                     {/* <button onClick={this.handleChange}><Icons noteType="NoteAudio"/></button> */}
                     <button>Add</button>
                 </form>
