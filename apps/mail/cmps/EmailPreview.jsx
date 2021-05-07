@@ -18,34 +18,26 @@ export function EmailPreview({ email, onMarkMail, onDeleteEmail }) {
     }
   }
 
-
   return (
     < React.Fragment >
       <tr className={`email-preview ${email.isRead ? "read" : "unread"}`} >
-        <td>
+        <td className="inbox-td">
           <Link to={`/mail/det/${email.id}`}>
             {email.subject}
           </Link>
         </td>
-        <td>
+        <td className="inbox-td">
           <Link to={`/mail/det/${email.id}`}>
             <LongTxt text={email.body} isLongTxtShown={false} />
             {/* {email.body} */}
           </Link>
-        </td>
-        <td> {timeToShow()}</td>
-        <td><img className="delete-mail" onClick={() => onDeleteEmail(email.id)}></img></td>
-        <td><img className={`img-${email.isRead ? "read" : "unread"}`} onClick={() => onMarkMail(email.id)}></img></td>
-        {/* <td><button>button</button></td> */}
+        </td >
+        <td className="inbox-td"> {timeToShow()}</td>
+        <td className="inbox-td"><img className="delete-mail" onClick={() => onDeleteEmail(email.id)}></img></td>
+        <td className="inbox-td"><img className={`img-${email.isRead ? "read" : "unread"}`} onClick={() => onMarkMail(email.id)}></img></td>
       </tr>
     </React.Fragment >
   )
 }
 
-
-{/* <article className={`email-preview ${email.isRead ? "read" : "unread"}`} >
-<p>{email.isRead ? "read" : "unread"}</p>
-<p>{email.subject}</p>
-<p>{email.body}</p>
-</article> */}
 

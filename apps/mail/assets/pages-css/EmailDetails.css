@@ -1,4 +1,27 @@
-
-.email-details{
+/* .main-contant{
 margin-left: 10px;
+color: #686f7a;
+background-color: #f2f3f5;
+padding: 20px;
+} */
+
+.email-details {
+    display: flex;
+    background-color: #f2f3f5;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+.email-content{
+    background-color: white;
+    border-top: 1px solid #f2f3f5;
+    padding: 20px 30px;
+    border-top: 4px solid rgba(236,82,82,1);
+    
+ 
 }
+/* 
+main.main-content .email-details{
+    background-color: khaki;
+} */

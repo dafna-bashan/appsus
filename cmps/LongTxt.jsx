@@ -6,7 +6,7 @@ export function LongTxt ({text, isLongTxtShown}) {
 
     return (
             <section>
-                {isLongTxtShown ? text : text.substr(0, 60)}...
+                {(isLongTxtShown || text.length< 100) ? text : text.substr(0, 100)+'...'}
             </section>
         )
 }

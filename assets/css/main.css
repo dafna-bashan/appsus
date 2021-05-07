@@ -121,6 +121,10 @@ a:active {
     display: none;
 }
 
+.align-right {
+    text-align: right;
+}
+
 
 /* list helpers */
 

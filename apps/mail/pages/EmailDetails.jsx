@@ -62,10 +62,12 @@ export class EmailDetails extends React.Component {
         return (
             < React.Fragment >
                 <div className="email-details">
+                    <div className="email-content container">
                     <h2>{email.subject}</h2>
                     <p>{this.timeToShow(email)}</p>
                     <p>{email.body}</p>
                     <img className="delete-mail" onClick={this.onDeleteEmail}></img>
+                    </div>
                 </div>
             </ React.Fragment >
 
