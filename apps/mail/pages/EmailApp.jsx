@@ -98,6 +98,7 @@ export class EmailApp extends React.Component {
 
 
     onSort = (SortBy) => {
+        
         if (this.state.SortBy === 'Date') {
             this.state.emails.sort(function(x, y){
                 return x.sentAt - y.sentAt;
