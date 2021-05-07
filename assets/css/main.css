@@ -11,6 +11,8 @@
 
 body {
     margin: 0;
+    user-select: none;
+    box-sizing: border-box;
 }
 
 
@@ -45,6 +47,7 @@ html {
     height: 100%;
 }
 
+
 h1,
 h2,
 h3,
@@ -61,10 +64,10 @@ button {
     cursor: pointer;
 }
 
-label,
+/* label,
 input {
     cursor: pointer;
-}
+} */
 
 a:link {
     text-decoration: none;

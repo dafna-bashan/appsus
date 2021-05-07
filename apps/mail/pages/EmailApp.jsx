@@ -9,7 +9,8 @@ import { EmailCompose } from '../pages/EmailCompose.jsx'
 export class EmailApp extends React.Component {
     state = {
         emails: null,
-        isCompose: false,
+        isComposeMode: false,
+        isToShowCompose: false,
         mailToCompose: {
             id: utilService.makeId(),
             subject: '',
@@ -25,7 +26,7 @@ export class EmailApp extends React.Component {
     }
     componentDidMount() {
         console.log('didMoint in EmailApp')
-        // this.isOpenCompose()
+        if (this.state.isToShowCompose) this.setState({isComposeMode: true})
         this.loadEmails()
     }
 
@@ -44,7 +45,7 @@ export class EmailApp extends React.Component {
         var searchParams = new URLSearchParams(this.props.location.search);
         var params = searchParams.get('compose')
         console.log('params', params)
-        params && this.setState({ isCompose: true })
+        params && this.setState({ isToShowCompose: true })
     }
 
     // onCompose = () => {
@@ -67,11 +68,21 @@ export class EmailApp extends React.Component {
         console.log('onAddMail state mail', this.state.mailToCompose)
         emailService.composeMail(mailToCompose)
             .then(emails => { this.setState({ emails }) })
-            .then(emails => { this.setState({ isCompose: false }) })
+            .then(emails => { this.setState({ isComposeMode: false }) })
+            .then(emails => { this.setState({ isToShowCompose: false }) })
             .then(emails => { this.props.history.push('/mail') })
 
 
     }
+
+    onDeleteEmail = (emailId) => {
+        console.log('on delete email')
+        emailService.deleteEmail(emailId)
+            .then(() => {
+                this.props.history.push('/mail')
+            })
+    }
+
 
     onSetFilter = (filterBy) => {
         this.setState({ filterBy }, this.loadEmails)
@@ -86,14 +97,15 @@ export class EmailApp extends React.Component {
                 <section className="container">
                 <EmailFilter onSetFilter={this.onSetFilter} />-
                     <h1>Your emails</h1>
-                <EmailList emails={emails} onMarkMail={this.onMarkMail} />
+                <EmailList emails={emails} onMarkMail={this.onMarkMail} onDeleteEmail={this.onDeleteEmail} />
                 {/* <button onClick={() => {
                         this.setState({ isCompose: true })
                     }}>Compose new mail</button> */}
                 <Link to={`/mail/?compose=new`}>
-                    {!this.state.isCompose && <h2 onClick={this.isOpenCompose}>compose</h2>}
+                    {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
+                    {/* {!this.state.isCompose && <h2 onClick={this.isOpenCompose}>compose</h2>} */}
                 </Link>
-                {this.state.isCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
+                {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
                 {/* {this.state.isCompose && <Link to={`/mail/compose`} onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}>link</Link>} */}
             </section>
             </div>

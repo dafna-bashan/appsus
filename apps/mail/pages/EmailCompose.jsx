@@ -11,7 +11,8 @@ export class EmailCompose extends React.Component {
             from: '',
             to: '',
             body: '',
-            readAt: Date.now()
+            sentAt: Date.now()
+            // sentAt: new Date().toLocaleTimeString()
         }
     }
 
@@ -38,13 +39,19 @@ export class EmailCompose extends React.Component {
 
     render() {
         return (
-            <form className="email-compose" onSubmit={this.onAddMail}>
-                <input type="text" id="subject" name="subject" placeholder="Subject" onChange={this.handleChange} required />
+            <React.Fragment >
+             <div className="email-compose"> 
+            <div className="new-msg-header">New Messege</div>
+            <form className="compose-mail-row" onSubmit={this.onAddMail}>
+                <input className="compose-mail-row" type="text" id="to" name="to" placeholder="To:"  onChange={this.handleChange} />
+                <input className="compose-mail-row" type="text" id="subject" name="subject" placeholder="Subject" onChange={this.handleChange} required />
                 <div>
-                    <textarea name="body" id="body" cols="30" rows="3" onChange={this.handleChange} ></textarea>
+                    <textarea className="" name="body" id="body" onChange={this.handleChange} ></textarea>
                 </div>
-                <button>Send</button>
+                <button className="send-mail">Send</button>
             </form>
+            </div>
+            </React.Fragment>
         )
     }
 

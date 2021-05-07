@@ -48,21 +48,21 @@ function _createMails() {
                 subject: 'Wassap?',
                 body: 'Pick up!',
                 isRead: false,
-                sentAt: (new Date(1551133930594)).getTime()
+                sentAt: Date.now()
             },
             {
                 id: utilService.makeId(),
                 subject: 'hello all',
                 body: 'hello nice to meat you!',
                 isRead: true,
-                sentAt: (new Date(1551133930594)).getTime()
+                sentAt: 1551133930594
             },
             {
                 id: utilService.makeId(),
                 subject: 'Wassap?',
                 body: utilService.makeLorem(20),
                 isRead: false,
-                sentAt: (new Date(1551133930594)).getTime()
+                sentAt: 15515773930594
             }
         ]
     }
