@@ -1,0 +1,44 @@
+.add-inputs {
+    flex-direction: column;
+}
+
+.add-container {
+    flex-direction: column;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 7px;
+}
+
+.add-container textarea {
+    resize: none;
+    border: none;
+}
+
+.add-container input {
+    border: none;
+    padding: 5px;
+}
+
+.btn-container {
+    padding: 5px 20px;
+}
+
+.icons {
+    display: inline-block;
+    width: 30px;
+}
+
+.NoteTxt svg {
+    width: 25px;
+}
+
+.NoteTodos svg {
+    width: 30px;
+}
+
+.NoteImg svg {
+    width: 30px;
+}
+
+.NoteVideo svg {
+    width: 35px;
+}

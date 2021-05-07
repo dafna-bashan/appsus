@@ -11,7 +11,9 @@ export const noteService = {
     togglePinNote,
     saveNote,
     removeTodo,
-    toggleDone
+    toggleDone,
+    toggleStyle,
+    changeColor
 }
 
 const KEY = 'notes';
@@ -38,12 +40,16 @@ function getNoteById(noteId) {
     return Promise.resolve(note);
 }
 
+function findNoteIdx(id) {
+    return gNotes.findIndex(note => note.id === id);
+}
+
 function _saveNotesToStorage() {
     storageService.saveToStorage(KEY, gNotes);
 }
 
 function togglePinNote(selectedNote) {
-    const idx = gNotes.findIndex(note => note.id === selectedNote.id);
+    const idx = findNoteIdx(selectedNote.id)
     if (selectedNote.isPinned === true) gNotes[idx].isPinned = false;
     else gNotes[idx].isPinned = true;
     console.log(selectedNote);
@@ -52,12 +58,25 @@ function togglePinNote(selectedNote) {
 
 function toggleDone(noteId, todoId) {
     if (!todoId || !noteId) return;
-    const noteIdx = gNotes.findIndex(note => note.id === noteId);
+    const noteIdx = findNoteIdx(noteId);
     const todoIdx = gNotes[noteIdx].info.todos.findIndex(todo => todo.id === todoId);
     if (gNotes[noteIdx].info.todos[todoIdx].doneAt) gNotes[noteIdx].info.todos[todoIdx].doneAt = null;
     else gNotes[noteIdx].info.todos[todoIdx].doneAt = Date.now();
     _saveNotesToStorage();
     return Promise.resolve(gNotes[noteIdx]);
+}
+
+function toggleStyle(noteId) {
+    const idx = gNotes.findIndex(note => note.id === noteId);
+    gNotes[idx].style.isChanging = !gNotes[idx].style.isChanging;
+    _saveNotesToStorage();
+}
+
+function changeColor(noteId, color) {
+    console.log(noteId, color);
+    const idx = findNoteIdx(noteId);
+    gNotes[idx].style.backgroundColor = color;
+    _saveNotesToStorage();
 }
 
 function removeNote(id) {
@@ -70,7 +89,7 @@ function removeNote(id) {
 
 function removeTodo(noteId, todoId) {
     // console.log(id);
-    const noteIdx = gNotes.findIndex(note => note.id === noteId);
+    const noteIdx = findNoteIdx(noteId);
     const todoIdx = gNotes[noteIdx].info.todos.findIndex(todo => todo.id === todoId);
     // console.log(idx);
     gNotes[noteIdx].info.todos.splice(todoIdx, 1);
@@ -79,9 +98,7 @@ function removeTodo(noteId, todoId) {
 }
 
 function saveNote(noteToUpdate) {
-    var noteIdx = gNotes.findIndex(note => {
-        return note.id === noteToUpdate.id;
-    })
+    const noteIdx = findNoteIdx(noteToUpdate.id);
     gNotes.splice(noteIdx, 1, noteToUpdate);
     _saveNotesToStorage();
     return Promise.resolve(noteToUpdate);
@@ -115,7 +132,8 @@ function _createNotes() {
                     txt: "I love coding!"
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    isChanging: false,
+                    backgroundColor: '#B0BAC3'
                 }
             },
             {
@@ -128,7 +146,8 @@ function _createNotes() {
 
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    isChanging: false,
+                    backgroundColor: '#B0BAC3'
                 }
             },
             {
@@ -141,7 +160,8 @@ function _createNotes() {
 
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    isChanging: false,
+                    backgroundColor: '#B0BAC3'
                 }
             },
             {
@@ -157,7 +177,8 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    isChanging: false,
+                    backgroundColor: '#B0BAC3'
                 }
             }
         ];
