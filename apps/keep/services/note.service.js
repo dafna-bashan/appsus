@@ -9,7 +9,9 @@ export const noteService = {
     createNote,
     removeNote,
     togglePinNote,
-    saveNote
+    saveNote,
+    removeTodo,
+    toggleDone
 }
 
 const KEY = 'notes';
@@ -48,12 +50,32 @@ function togglePinNote(selectedNote) {
     _saveNotesToStorage();
 }
 
+function toggleDone(noteId, todoId) {
+    if (!todoId || !noteId) return;
+    const noteIdx = gNotes.findIndex(note => note.id === noteId);
+    const todoIdx = gNotes[noteIdx].info.todos.findIndex(todo => todo.id === todoId);
+    if (gNotes[noteIdx].info.todos[todoIdx].doneAt) gNotes[noteIdx].info.todos[todoIdx].doneAt = null;
+    else gNotes[noteIdx].info.todos[todoIdx].doneAt = Date.now();
+    _saveNotesToStorage();
+    return Promise.resolve(gNotes[noteIdx]);
+}
+
 function removeNote(id) {
-    console.log(id);
+    // console.log(id);
     const idx = gNotes.findIndex(note => note.id === id);
-    console.log(idx);
+    // console.log(idx);
     gNotes.splice(idx, 1);
     _saveNotesToStorage();
+}
+
+function removeTodo(noteId, todoId) {
+    // console.log(id);
+    const noteIdx = gNotes.findIndex(note => note.id === noteId);
+    const todoIdx = gNotes[noteIdx].info.todos.findIndex(todo => todo.id === todoId);
+    // console.log(idx);
+    gNotes[noteIdx].info.todos.splice(todoIdx, 1);
+    _saveNotesToStorage();
+    return Promise.resolve(gNotes[noteIdx]);
 }
 
 function saveNote(noteToUpdate) {
@@ -129,9 +151,9 @@ function _createNotes() {
                 title: "Todo",
                 info: {
                     todos: [
-                        { txt: "Implement keep app", doneAt: null },
-                        { txt: "Implement mail app", doneAt: 187111111 },
-                        { txt: "Go to the beach!!!", doneAt: null }
+                        { id: utilService.makeId(), txt: "Implement keep app", doneAt: null },
+                        { id: utilService.makeId(), txt: "Implement mail app", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Go to the beach!!!", doneAt: null }
                     ]
                 },
                 style: {

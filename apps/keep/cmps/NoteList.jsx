@@ -4,7 +4,7 @@ import { Pin } from './Pin.jsx'
 import { Edit } from './Edit.jsx'
 import { Trash } from './Trash.jsx'
 
-export function NoteList({ notes, onRemoveNote, onPinNote }) {
+export function NoteList({ notes, onRemoveNote, onPinNote, onEditNote }) {
   var pinnedNotes = notes.filter(note=> note.isPinned);
   var notes = notes.filter(note=> !note.isPinned);
 
@@ -28,7 +28,7 @@ export function NoteList({ notes, onRemoveNote, onPinNote }) {
           <NotePreview note={note} />
           <div className="flex">
             <Pin note={note} onPinNote={onPinNote} />
-            <Edit note={note}/>
+            <Edit note={note} onEditNote={onEditNote}/>
             <Trash note={note} onRemoveNote={onRemoveNote} />
           </div>
         </div>

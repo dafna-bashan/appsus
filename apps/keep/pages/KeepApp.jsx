@@ -9,7 +9,7 @@ export class KeepApp extends React.Component {
     state = {
         notes: null,
         filterBy: null,
-        // isAdding: false,
+        isEditing: false,
     }
 
     componentDidMount() {
@@ -41,9 +41,9 @@ export class KeepApp extends React.Component {
         this.loadNotes();
     }
 
-    // setIsAdding = (isAdding) => {
-    //     this.setState({ isAdding })
-    // }
+    onEditNote = (isEditing) => {
+        this.setState({ isEditing})
+    }
 
     render() {
         // console.log('RENDER!', this.state.books);
@@ -57,7 +57,7 @@ export class KeepApp extends React.Component {
                     <NoteAdd onAddNote={this.onAddNote} />
 
                     {/* <NoteFilter onSetFilter={this.onSetFilter} /> */}
-                    <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onPinNote={this.onPinNote} />
+                    <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onPinNote={this.onPinNote} onEditNote={this.onEditNote}/>
                 </section>
             </div>
         )

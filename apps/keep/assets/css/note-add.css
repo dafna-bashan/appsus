@@ -22,3 +22,11 @@ iframe {
 .icons {
     display: inline-block;
 }
+
+.done {
+    text-decoration: line-through;
+}
+
+.not-done {
+    text-decoration: none;
+}
