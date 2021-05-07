@@ -37,7 +37,7 @@ export class EmailApp extends React.Component {
     }
 
     loadEmails() {
-        emailService.query(this.state.filterBy).then((emails) => {
+        emailService.query(this.state.filterBy, this.state.SortBy).then((emails) => {
             this.setState({ emails })
         })
     }
@@ -58,10 +58,10 @@ export class EmailApp extends React.Component {
     // }
 
     onMarkMail = (mailId) => {
-        console.log('to mark mail as read/unread')
+        // console.log('to mark mail as read/unread')
         emailService.markMail(mailId)
             .then(emails => { this.setState({ emails }) })
-        console.log(mailId)
+        // console.log(mailId)
     }
 
     onAddMail = (mailToCompose) => {
@@ -78,7 +78,7 @@ export class EmailApp extends React.Component {
     }
 
     onDeleteEmail = (emailId) => {
-        console.log('on delete email')
+        // console.log('on delete email')
         emailService.deleteEmail(emailId)
             .then(() => {
                 this.props.history.push('/mail')
@@ -91,25 +91,33 @@ export class EmailApp extends React.Component {
 
     handleSortChange = (ev) => {
         const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
-        this.setState({ SortBy : value }, () => {
-            this.onSort(this.state.SortBy)
+        this.setState({ SortBy: value }, () => {
+            this.onSetSort(this.state.SortBy)
         })
     }
 
 
-    onSort = (SortBy) => {
-        
-        if (this.state.SortBy === 'Date') {
-            this.state.emails.sort(function(x, y){
-                return x.sentAt - y.sentAt;
-            })
-        } else{
-            this.state.emails.sort(function(a, b){
-                if(a.title < b.title) { return -1; }
-                if(a.title > b.title) { return 1; }
-                return 0;
-            })
-        }
+    onSort = () => {
+        this.onSetSort(this.state.SortBy)
+    }
+
+
+    onSetSort = (SortBy) => {
+        this.setState({ SortBy }, this.loadEmails)
+        // console.log(SortBy)
+        // var emailsArr = [...this.state.emails]
+        // if (this.state.SortBy === 'Date') {
+        //     emailsArr.sort(function(x, y){
+        //         return x.sentAt - y.sentAt;
+        //     })
+        // } else{
+        //     emailsArr.sort(function(a, b){
+        //         if(a.title < b.title) { return -1; }
+        //         if(a.title > b.title) { return 1; }
+        //         return 0;
+        //     })
+        // }
+        // this.setState({emails : emailsArr})
     }
 
 
@@ -121,10 +129,10 @@ export class EmailApp extends React.Component {
             <div>
                 <section className="container">
                     Filter By:<EmailFilter onSetFilter={this.onSetFilter} />
-                    <form className="email-sort" onSubmit={this.onSort}>
+                    <form className="email-sort" onSubmit={() => onSort()}>
                         <select id="sortBy" name="sortBy" onChange={this.handleSortChange}>
                             <option> Date </option>
-                            <option> Title </option>
+                            <option> Subject </option>
                         </select>
                     </form>
                     <h1>Your emails</h1>
