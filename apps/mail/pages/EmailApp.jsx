@@ -17,16 +17,18 @@ export class EmailApp extends React.Component {
             from: '',
             to: '',
             body: '',
-            readAt: Date.now()
+            sentAt: Date.now()
         },
         filterBy: {
             readFilter: 'All',
             searchText: null
-        }
+        },
+        SortBy: 'Date'
     }
     componentDidMount() {
         console.log('didMoint in EmailApp')
-        if (this.state.isToShowCompose) this.setState({isComposeMode: true})
+        if (this.state.isToShowCompose) this.setState({ isComposeMode: true })
+        else this.props.history.push('/mail')
         this.loadEmails()
     }
 
@@ -41,11 +43,12 @@ export class EmailApp extends React.Component {
     }
 
     isOpenCompose = () => {
-        console.log('isCompose')
-        var searchParams = new URLSearchParams(this.props.location.search);
-        var params = searchParams.get('compose')
-        console.log('params', params)
-        params && this.setState({ isToShowCompose: true })
+        // console.log('isCompose')
+        // var searchParams = new URLSearchParams(this.props.location.search);
+        // var params = searchParams.get('compose')
+        // console.log('params', params)
+        // params && this.setState({ isToShowCompose: true })
+        this.setState({ isToShowCompose: true })
     }
 
     // onCompose = () => {
@@ -60,7 +63,6 @@ export class EmailApp extends React.Component {
             .then(emails => { this.setState({ emails }) })
         console.log(mailId)
     }
-
 
     onAddMail = (mailToCompose) => {
         // ev.preventDefault()
@@ -83,32 +85,61 @@ export class EmailApp extends React.Component {
             })
     }
 
-
     onSetFilter = (filterBy) => {
         this.setState({ filterBy }, this.loadEmails)
     }
+
+    handleSortChange = (ev) => {
+        const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
+        this.setState({ SortBy : value }, () => {
+            this.onSort(this.state.SortBy)
+        })
+    }
+
+
+    onSort = (SortBy) => {
+        if (this.state.SortBy === 'Date') {
+            this.state.emails.sort(function(x, y){
+                return x.sentAt - y.sentAt;
+            })
+        } else{
+            this.state.emails.sort(function(a, b){
+                if(a.title < b.title) { return -1; }
+                if(a.title > b.title) { return 1; }
+                return 0;
+            })
+        }
+    }
+
 
     render() {
         console.log('RENDER im EmailApp!', this.state.emails);
         const { emails } = this.state
         if (!emails) return <div>Loading...</div>
         return (
-            <div>                
+            <div>
                 <section className="container">
-                <EmailFilter onSetFilter={this.onSetFilter} />-
+                    Filter By:<EmailFilter onSetFilter={this.onSetFilter} />
+                    <form className="email-sort" onSubmit={this.onSort}>
+                        <select id="sortBy" name="sortBy" onChange={this.handleSortChange}>
+                            <option> Date </option>
+                            <option> Title </option>
+                        </select>
+                    </form>
                     <h1>Your emails</h1>
-                <EmailList emails={emails} onMarkMail={this.onMarkMail} onDeleteEmail={this.onDeleteEmail} />
-                {/* <button onClick={() => {
-                        this.setState({ isCompose: true })
-                    }}>Compose new mail</button> */}
-                <Link to={`/mail/?compose=new`}>
-                    {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
-                    {/* {!this.state.isCompose && <h2 onClick={this.isOpenCompose}>compose</h2>} */}
-                </Link>
-                {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
-                {/* {this.state.isCompose && <Link to={`/mail/compose`} onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}>link</Link>} */}
-            </section>
+                    <EmailList emails={emails} onMarkMail={this.onMarkMail} onDeleteEmail={this.onDeleteEmail} />
+                    <Link to={`/mail/?compose=new`}>
+                        {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
+                        {/* {!this.state.isCompose && <h2 onClick={this.isOpenCompose}>compose</h2>} */}
+                    </Link>
+                    {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
+                    {/* {this.state.isCompose && <Link to={`/mail/compose`} onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}>link</Link>} */}
+                </section>
             </div>
         )
     }
 }
+
+
+
+

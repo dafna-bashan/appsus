@@ -14,8 +14,9 @@ const KEY = 'mails_key';
 
 var gMails
 
+_createMails();
+
 function query(filterBy) {
-    _createMails();
     var { readFilter, searchText } = filterBy
     console.log('hello')
     console.log(filterBy)
@@ -62,7 +63,7 @@ function _createMails() {
                 subject: 'Wassap?',
                 body: utilService.makeLorem(20),
                 isRead: false,
-                sentAt: 15515773930594
+                sentAt: 1551133930594
             }
         ]
     }
