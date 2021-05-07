@@ -27,8 +27,8 @@ export class EmailApp extends React.Component {
     }
     componentDidMount() {
         console.log('didMoint in EmailApp')
-        if (this.state.isToShowCompose) this.setState({ isComposeMode: true })
-        else this.props.history.push('/mail')
+        // if (this.state.isToShowCompose) this.setState({ isComposeMode: true })
+        // else this.props.history.push('/mail')
         this.loadEmails()
     }
 
@@ -51,11 +51,6 @@ export class EmailApp extends React.Component {
         this.setState({ isToShowCompose: true })
     }
 
-    // onCompose = () => {
-    //     console.log('hello')
-    //     this.setState({ isCompose: true })
-    //     console.log('isCompose:', isCompose)
-    // }
 
     onMarkMail = (mailId) => {
         // console.log('to mark mail as read/unread')
@@ -73,15 +68,14 @@ export class EmailApp extends React.Component {
             .then(emails => { this.setState({ isComposeMode: false }) })
             .then(emails => { this.setState({ isToShowCompose: false }) })
             .then(emails => { this.props.history.push('/mail') })
-
-
     }
 
     onDeleteEmail = (emailId) => {
-        // console.log('on delete email')
+        console.log('on delete email')
         emailService.deleteEmail(emailId)
             .then(() => {
                 this.props.history.push('/mail')
+                this.loadEmails()
             })
     }
 

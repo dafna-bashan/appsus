@@ -7,12 +7,11 @@
 @import '../../apps/keep/assets/css/note-add.css';
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
     margin: 0;
-    user-select: none;
-    box-sizing: border-box;
 }
 
 
