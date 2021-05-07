@@ -11,9 +11,9 @@ export class NoteAdd extends React.Component {
             id: '',
             type: "NoteTxt",
             isPinned: true,
-            title: 'Coding',
+            title: '',
             info: {
-                txt: "I love coding!"
+                txt: ''
             },
             style: {
                 backgroundColor: "#00d"
@@ -121,11 +121,13 @@ export class NoteAdd extends React.Component {
     inputRef = React.createRef()
 
     render() {
+        const {title, info} = this.state.note
+
         return (
             <section>
                 <form onSubmit={this.addNote}>
-                    <input type="text" name="title" id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} required />
-                    <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} required></textarea>
+                    <input type="text" name="title" value={title} id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} required />
+                    <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} value={info.txt} required></textarea>
                     {/* <input type="text" name="info" id="info"    /> */}
                     <Icons noteType="NoteTxt" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteTodos" handleChange={this.handleTypeChange} />
