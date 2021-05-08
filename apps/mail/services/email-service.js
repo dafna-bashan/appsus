@@ -112,7 +112,7 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 subject: 'A special discount is waiting for you inside',
-                body: 'Thank you so much for being a customer of Miss-Books. Its because of people like you we have been able to be in business for such a long time. To thank you, we have created a discount coupon especially for you. Use the code: miss15pq to get a discount of 15% from any product in our store.But hurry! The offer is only available for the first 50 people who make the purchase. Thank you',
+                body: 'Thank you so much for being a customer of Miss-Books.\n Its because of people like you we have been able to be in business for such a long time.\n To thank you, we have created a discount coupon especially for you.\n Use the code: miss15pq to get a discount of 15% from any product in our store.\n But hurry! The offer is only available for the first 50 people who make the purchase.\n Thank you',
                 isRead: false,
                 sentAt: 1551133930594
             }

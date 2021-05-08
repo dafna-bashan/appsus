@@ -1,31 +1,69 @@
 .email-preview {
+    box-shadow: 0 -1px 0 0 rgb(100 121 143 / 12%);
     color: #202124;
-    margin: 10px;
-    font-family: roboto-regular,Helvetica,Arial,sans-serif;
-    font-size: .875rem;
-    letter-spacing: .2px;
+    font-size: 0.875rem;
+    width: 100%;
+    margin: 0;
+    /* display: flex;
+    position: relative */
+}
+
+/* 
+.inbox-td{
+    flex-grow: 1;
+    padding-right: 16px;
+} */
+
+.email-list {
+    border-collapse: collapse;
+    display: flex;
+    flex-flow: column nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    /* flex: 1 1 auto; */
+}
+
+
+td{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.email-body-prv{
+    flex-grow: 3;
+}
+
+.email-sub-prv{
+    /* flex-grow: 1; */
+    flex-basis: 168px;
+    max-width: 168px;
 }
 
 .unread {
-    font-family: roboto-bold,Helvetica,Arial,sans-serif;
+    font-family: roboto-bold, Helvetica, Arial, sans-serif;
 }
 
-.read{
-    background-color: rgba(242,245,245,0.8);
-    font-family: roboto-regular,Helvetica,Arial,sans-serif;
+.read {
+    background-color: rgba(242, 245, 245, 0.8);
+    font-family: roboto-regular, Helvetica, Arial, sans-serif;
 }
 
-.delete-mail{
+.delete-mail {
     content: url("../icon/delete_mail.png");
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
 }
 
-.img-read{
+.img-read {
     content: url("../icon/mark_unread_mail.png");
     height: 24px;
+    width: 24px;
+    cursor: pointer;
 }
 
-.img-unread{
+.img-unread {
     content: url("../icon/mark_read_mail.png");
     height: 24px;
-
+    width: 24px;
+    cursor: pointer;
 }

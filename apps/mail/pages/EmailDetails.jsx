@@ -40,22 +40,36 @@ export class EmailDetails extends React.Component {
             })
     }
 
- 
+    timeToShow = (email) => {
+        var today = new Date().setHours(0, 0, 0, 0);
+        var thatDay = new Date(email.sentAt).setHours(0, 0, 0, 0);
+        if (today === thatDay) {
+            return new Date(email.sentAt).toLocaleTimeString()
+        } else {
+            return new Date(email.sentAt).toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            }).split(' ').join('-')
+        }
+    }
+
 
     render() {
         console.log('render in email details')
         const { email } = this.state
         if (!email) return <div>Loading...</div>
         return (
-            <div className="email-details">
-                <h2>all the mail</h2>
-                <p>{email.sentAt}</p>
-                <p>{email.body}</p>
-                <button onClick={this.onDeleteEmail}>Delete Email</button>
-                {/* <button onClick={this.onTest}>test</button> */}
-                {/* <button onClick={() => this.props.history.push('/mail')} > Go back</button> */}
-
-            </div>
+            < React.Fragment >
+                <div className="email-details">
+                    <div className="email-content container">
+                    <h2>{email.subject}</h2>
+                    <p>{this.timeToShow(email)}</p>
+                    <p>{email.body}</p>
+                    <img className="delete-mail" onClick={this.onDeleteEmail}></img>
+                    </div>
+                </div>
+            </ React.Fragment >
 
         )
     }
