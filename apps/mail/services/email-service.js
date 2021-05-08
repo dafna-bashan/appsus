@@ -84,9 +84,9 @@ function _createMails() {
                 id: utilService.makeId(),
                 subject: 'Wassap?',
                 from: 'Sam lyrrer',
-                body: 'Pick up! I a\'m tring to reach you!',
+                body: 'Pick up! I\'m trying to reach you!',
                 isRead: true,
-                sentAt: 1619028654000
+                sentAt: 1619028652000
             },
             {
                 id: utilService.makeId(),
@@ -100,7 +100,7 @@ function _createMails() {
                 id: utilService.makeId(),
                 subject: 'Shavuot party at the office',
                 from: 'Shelly Gold',
-                body: 'Hey! Are you goint to the party? I have nothing white to wear!',
+                body: 'Hey! Are you going to the party? I have nothing white to wear!',
                 isRead: false,
                 sentAt: Date.now()
             },
