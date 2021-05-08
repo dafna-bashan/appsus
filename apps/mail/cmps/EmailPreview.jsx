@@ -28,8 +28,8 @@ export function EmailPreview({ email, onMarkMail, onDeleteEmail }) {
         </td>
         <td className="inbox-td email-body-prv flex-1">
           <Link to={`/mail/det/${email.id}`}>
-            <LongTxt text={email.body} isLongTxtShown={false} />
-            {/* {email.body} */}
+            {/* <LongTxt text={email.body} isLongTxtShown={false} /> */}
+            {email.body}
           </Link>
         </td >
         <td className="inbox-td flex email-time">{timeToShow()}</td>

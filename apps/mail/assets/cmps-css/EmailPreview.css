@@ -4,23 +4,16 @@
     font-size: 0.875rem;
     width: 100%;
     margin: 0;
-    /* display: flex;
-    position: relative */
+
 }
 
-/* 
-.inbox-td{
-    flex-grow: 1;
-    padding-right: 16px;
-} */
+
 
 .email-list {
     border-collapse: collapse;
     width: 500px;
-    /* display: flex; */
-    /* flex-flow: column nowrap; */
-    /* text-overflow: ellipsis; */
-    /* flex: 1 1 auto; */
+    margin-top:15px;
+
 }
 
 tr {
@@ -79,6 +72,18 @@ td {
     margin-right: 0.5rem;
 }
 
+.email-body-prv {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+}
+.email-sub-prv {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* MEDIUM */
 
 @media (min-width: 700px) {
@@ -98,19 +103,19 @@ td {
         width: 100%
     }
     .email-body-prv {
-        /* overflow: hidden;
+        overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap; */
-        /* flex-grow: 3; */
+        white-space: nowrap;
+        max-width: 288.03px;
     }
     .email-sub-prv {
-        min-width: 168px;
+        width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
     .email-time {
-        min-width: 168px;
+        min-width: 100px;
     }
 }
 
@@ -124,6 +129,9 @@ td {
         width: 1060px;
     }
 
+    .email-body-prv {
+        max-width: 688.03px;
+    }
     tr {
         background-color: lightcoral;
         flex-direction: row;

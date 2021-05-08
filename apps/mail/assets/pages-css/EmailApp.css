@@ -1,4 +1,9 @@
 .add-mail-btn{
-    background-color: rgb(167, 167, 167);
+    background-color: rgb(179, 50, 50);
+}
+
+.email-sort{
+width: 100px;
+margin-top: 5px;
 }
 

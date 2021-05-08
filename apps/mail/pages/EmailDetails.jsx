@@ -65,7 +65,7 @@ export class EmailDetails extends React.Component {
                     <div className="email-content">
                     <h2>{email.subject}</h2>
                     <p>{this.timeToShow(email)}</p>
-                    <p>{email.body}</p>
+                    <p className="detail-body">{email.body}</p>
                     <img className="delete-mail" onClick={this.onDeleteEmail}></img>
                     </div>
                 </div>
