@@ -62,7 +62,7 @@ export class EmailDetails extends React.Component {
         return (
             < React.Fragment >
                 <div className="email-details">
-                    <div className="email-content container">
+                    <div className="email-content">
                     <h2>{email.subject}</h2>
                     <p>{this.timeToShow(email)}</p>
                     <p>{email.body}</p>

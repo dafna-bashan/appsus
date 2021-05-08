@@ -16,14 +16,14 @@
 
 .email-list {
     border-collapse: collapse;
-    display: flex;
+    width: 500px;
+    /* display: flex; */
     /* flex-flow: column nowrap; */
-    text-overflow: ellipsis;
-    width: 100%;
+    /* text-overflow: ellipsis; */
     /* flex: 1 1 auto; */
 }
 
-tr{
+tr {
     flex-direction: column;
     background-color: khaki;
 }
@@ -33,9 +33,8 @@ td {
     padding-right: 0.5rem;
 }
 
-
 .email-body-prv {
-    flex-grow: 3;
+    flex-grow: 1;
 }
 
 .email-sub-prv {
@@ -44,9 +43,7 @@ td {
     max-width: 168px; */
 }
 
-
-
-.del-td{
+.del-td {
     display: inline;
 }
 
@@ -92,15 +89,28 @@ td {
         gap: 20px;
         justify-content: center;
     } */
+    .email-list {
+        width: 660px;
+    }
     tr {
         background-color: aquamarine;
         flex-direction: row;
-        width:100%
+        width: 100%
+    }
+    .email-body-prv {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        /* flex-grow: 3; */
     }
     .email-sub-prv {
-        /* flex-grow: 1; */
-        flex-basis: 168px;
-        max-width: 168px;
+        min-width: 168px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .email-time {
+        min-width: 168px;
     }
 }
 
@@ -110,23 +120,17 @@ td {
     /* .add-container {
         width: 60%;
     } */
+    .email-list {
+        width: 1060px;
+    }
+
     tr {
         background-color: lightcoral;
         flex-direction: row;
+        width: 100%
     }
-
     td {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
-    }
-    
-    .email-body-prv {
-        flex-grow: 3;
-    }
-    
-    .email-sub-prv {
-        /* flex-grow: 1; */
-        flex-basis: 168px;
-        max-width: 168px;
     }
 }
