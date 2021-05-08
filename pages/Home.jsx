@@ -7,7 +7,7 @@ export function Home() {
 
     return(
         <div className="home flex justify-center align-center">
-            <img src="../assets/img/home-img.png"/>
+            <img src="assets/img/home-img.png"/>
             <div className="flex apps-icons">
             <div>
             <MailIcon/>
@@ -28,7 +28,6 @@ export function Home() {
             </NavLink>
             </div>
             </div>
-         
         </div>
     )
 }
