@@ -12,7 +12,8 @@
     box-shadow: 0 0px 3px 2px #7e7d7d78;
     padding: 10px;
     text-align: center;
-    width: 280px;
+    width: 300px;
+    height: 100%;
 }
 
 .book-preview img {

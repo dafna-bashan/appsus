@@ -186,6 +186,19 @@ function _createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: true,
+                title: 'Modern Art',
+                info: {
+                    txt: "InDesign are built on the vital element in a message. Of developers to be able to the message that applying. Task design an interface that dictates how we might soon be. Challenge no other updates the product or not interested in the senses. Apple throws at using the product or even tastes, good old pencil. Design single adaptive interface elements but I believe that appeals."
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "NoteTodos",
                 isPinned: true,
                 title: "Groceries",
@@ -208,6 +221,24 @@ function _createNotes() {
                 title: 'Modern Art',
                 info: {
                     txt: "That centuries been proposed, among them were part of modern art criticism his interests. Reflected to perform psychoanalysis is Laurie Schneider Adams, who gathered in this is. Served surveys of modern art history of the important modern painting."
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteTodos",
+                isPinned: true,
+                title: "Learn",
+                info: {
+                    todos: [
+                        { id: utilService.makeId(), txt: "JavaScript", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "HTML", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Css", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "React", doneAt: null }
+                    ]
                 },
                 style: {
                     isChanging: false,

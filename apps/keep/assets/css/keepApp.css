@@ -26,9 +26,11 @@ svg {
 
 .colors-container {
     position: absolute;
-    margin-top: 20px;
+    margin-top: 40px;
     background-color: rgb(235, 235, 235);
+    border: .5px solid rgb(155, 155, 155);
     padding: 5px;
+    border-radius: 3px;
 }
 
 .blue {

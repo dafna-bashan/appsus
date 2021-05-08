@@ -5,6 +5,7 @@
 @import '../../apps/mail/assets/pages-css/EmailCompose.css';
 @import './app-header.css';
 @import './app-footer.css';
+@import './Home.css';
 @import '../../apps/keep/assets/css/keepApp.css';
 @import '../../apps/books/assets/css/BookApp.css';
 * {
@@ -82,7 +83,11 @@ a:hover {
 
 a:active {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
+}
+
+a:active svg {
+    color: aqua;
 }
 
 
