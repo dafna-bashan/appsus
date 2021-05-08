@@ -6,20 +6,22 @@ padding: 20px;
 } */
 
 .email-details {
-    display: flex;
     background-color: #f2f3f5;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
 } 
 
 .email-content{
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-top: 1px solid #f2f3f5;
     padding: 20px 30px;
     border-top: 4px solid rgba(236,82,82,1);
-    
- 
+    height: 100%;
+    /* align-items: center; */
 }
 /* 
 main.main-content .email-details{

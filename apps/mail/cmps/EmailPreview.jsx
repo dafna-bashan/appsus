@@ -20,13 +20,13 @@ export function EmailPreview({ email, onMarkMail, onDeleteEmail }) {
 
   return (
     < React.Fragment >
-      <tr className={`email-preview ${email.isRead ? "read" : "unread"}`} >
-        <td className="inbox-td">
+      <tr className={`email-preview flex ${email.isRead ? "read" : "unread"}`} >
+        <td className="inbox-td email-sub-prv">
           <Link to={`/mail/det/${email.id}`}>
             {email.subject}
           </Link>
         </td>
-        <td className="inbox-td">
+        <td className="inbox-td email-body-prv">
           <Link to={`/mail/det/${email.id}`}>
             <LongTxt text={email.body} isLongTxtShown={false} />
             {/* {email.body} */}

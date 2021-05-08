@@ -122,21 +122,18 @@ export class EmailApp extends React.Component {
         return (
             <div>
                 <section className="container">
-                    Filter By:<EmailFilter onSetFilter={this.onSetFilter} />
+                    <Link to={`/mail/?compose=new`}>
+                        {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
+                    </Link>
+                    {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
+                   <EmailFilter onSetFilter={this.onSetFilter} />
                     <form className="email-sort" onSubmit={() => onSort()}>
                         <select id="sortBy" name="sortBy" onChange={this.handleSortChange}>
                             <option> Date </option>
                             <option> Subject </option>
                         </select>
                     </form>
-                    <h1>Your emails</h1>
                     <EmailList emails={emails} onMarkMail={this.onMarkMail} onDeleteEmail={this.onDeleteEmail} />
-                    <Link to={`/mail/?compose=new`}>
-                        {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
-                        {/* {!this.state.isCompose && <h2 onClick={this.isOpenCompose}>compose</h2>} */}
-                    </Link>
-                    {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
-                    {/* {this.state.isCompose && <Link to={`/mail/compose`} onAddMail={this.onAddMail} mailToCompose={this.mailToCompose}>link</Link>} */}
                 </section>
             </div>
         )
