@@ -1,0 +1,34 @@
+.note-edit {
+    width: 100%;
+}
+
+.edit-txt {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-txt>* {
+    padding: 5px;
+}
+
+.edit-todos {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-todos>* {
+    padding: 5px;
+}
+
+.note-edit button {
+    padding: 5px 20px;
+}
+
+.edit-todos input {
+    flex: 1;
+}
+
+.edit-txt textarea {
+    resize: none;
+    height: 200px;
+}

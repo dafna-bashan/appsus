@@ -1,6 +1,7 @@
 @import './NoteAdd.css';
 @import './NoteFilter.css';
 @import './NoteList.css';
+@import './NoteEdit.css';
 svg {
     width: 20px;
     margin: 0 5px;

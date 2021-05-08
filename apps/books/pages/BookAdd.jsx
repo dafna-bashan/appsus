@@ -27,7 +27,8 @@ export class BookAdd extends React.Component {
   };
 
 addGoogleBook = (book)=>{
-    if (!bookService.addGoogleBook(book)){
+  const addBook = bookService.addGoogleBook(book)
+    if (!addBook){
         eventBusService.showUserMsg(`The book ${book.volumeInfo.title} alredy exist!`, 'error', book.id)
     }else {
         // bookService.addGoogleBook(book);
@@ -48,8 +49,8 @@ addGoogleBook = (book)=>{
 
   render() {
     return (
-        <section>
-        <form>
+        <section className="search">
+        <form className="flex">
             <input type="search" name="search" id="search" placeholder="search book" onChange={this.handleChange}/>
             <button onClick={this.loadResults}>Search</button>
         </form>

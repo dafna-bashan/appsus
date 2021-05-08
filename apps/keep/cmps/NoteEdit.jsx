@@ -147,16 +147,16 @@ export class NoteEdit extends React.Component {
   render() {
     const { note } = this.state
     return (
-      <section>
+      <section className="note-edit">
         {note.type === 'NoteTodos' &&
-          <section>
+          <section className="edit-todos flex">
             <h4>{note.title}</h4>
             {console.log(note)}
-            {note.info.todos.map((todo, idx) => <div key={idx}>
-              <TodoListItem todo={todo} note={note} idx={idx} onToggleDone={this.onToggleDone}/><EditTodo isEditing={this.state.isEditing}/><TrashTodo
-              todo={todo} note={note} onRemoveTodo={this.onRemoveTodo}/>
+            {note.info.todos.map((todo, idx) => <div className="flex" key={idx}>
+              <TodoListItem todo={todo} note={note} idx={idx} onToggleDone={this.onToggleDone}/>
+              <TrashTodo todo={todo} note={note} onRemoveTodo={this.onRemoveTodo}/>
             </div>)}
-            <form onSubmit={this.onAddTodo}>
+            <form onSubmit={this.onAddTodo} className="flex">
               <input type="text" name="txt" id="txt" placeholder="add todo" value={note.info.txt}onChange={this.handleChange}/>
               <button>Add</button>
             </form>
@@ -165,7 +165,7 @@ export class NoteEdit extends React.Component {
         }
 
         {this.state.note.type !== 'NoteTodos' &&
-          <form onSubmit={this.onSaveNote}>
+          <form onSubmit={this.onSaveNote} className="flex edit-txt">
             <input type="text" name="title" id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} value={this.titleValue} />
             <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} value={this.textAreaValue}></textarea>
             <button>Save</button>

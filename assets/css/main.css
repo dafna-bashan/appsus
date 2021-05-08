@@ -5,7 +5,8 @@
 @import '../../apps/mail/assets/pages-css/EmailCompose.css';
 @import './app-header.css';
 @import './app-footer.css';
-@import '../../apps/keep/assets/css/keep.css';
+@import '../../apps/keep/assets/css/keepApp.css';
+@import '../../apps/books/assets/css/BookApp.css';
 * {
     box-sizing: border-box;
     user-select: none;
@@ -53,7 +54,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 5px 0;
+    margin: 10px 0;
     /* font-weight: normal; */
 }
 
@@ -87,7 +88,7 @@ a:active {
 /* HELPERS */
 
 .container {
-    max-width: 350px;
+    width: 350px;
     margin: 0 auto;
 }
 

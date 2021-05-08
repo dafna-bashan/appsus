@@ -128,7 +128,7 @@ export class NoteAdd extends React.Component {
                 <form onSubmit={this.addNote}>
                     <div className="flex add-container container">
                     <div className="flex add-inputs">
-                    <input type="text" name="title" value={title} id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} required />
+                    <input type="text" name="title" value={title} id="title" placeholder="Title" onChange={this.handleChange} ref={this.inputRef} required />
                     <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} value={info.txt} required></textarea>    
                     </div>
                     <div className="btn-container">
