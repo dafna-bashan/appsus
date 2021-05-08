@@ -13,12 +13,6 @@ export class EmailDetails extends React.Component {
         this.loadEmail()
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
-    //         this.loadEmail()
-    //     }
-    // }
-
     loadEmail() {
         const id = this.props.match.params.mailId
         console.log(id);
@@ -33,11 +27,14 @@ export class EmailDetails extends React.Component {
     }
 
     onDeleteEmail = () => {
-        console.log('on delete email')
         emailService.deleteEmail(this.state.email.id)
             .then(() => {
                 this.props.history.push('/mail')
             })
+    }
+
+    onGoBack = () => {
+        this.props.history.push('/mail')
     }
 
     timeToShow = (email) => {
@@ -63,10 +60,14 @@ export class EmailDetails extends React.Component {
             < React.Fragment >
                 <div className="email-details">
                     <div className="email-content">
-                    <h2>{email.subject}</h2>
-                    <p>{this.timeToShow(email)}</p>
+                    <h3>{email.subject}</h3>
+                    <h4 className="email-from">From: {email.from}</h4>
+                    <h5>{this.timeToShow(email)}</h5>
                     <p className="detail-body">{email.body}</p>
+                    <div className="det-btns">
                     <img className="delete-mail" onClick={this.onDeleteEmail}></img>
+                    <button className="go-back-mail" onClick={this.onGoBack}>Go back</button>
+                    </div>
                     </div>
                 </div>
             </ React.Fragment >
