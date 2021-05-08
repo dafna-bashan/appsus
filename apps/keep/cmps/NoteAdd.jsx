@@ -131,15 +131,16 @@ export class NoteAdd extends React.Component {
                     <input type="text" name="title" value={title} id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} required />
                     <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} value={info.txt} required></textarea>    
                     </div>
-                    <div className="flex space-between btn-container">
+                    <div className="btn-container">
+                        <div className="flex">
                     <Icons noteType="NoteTxt" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteTodos" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteImg" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteVideo" handleChange={this.handleTypeChange} />
                     <button>Add</button>
+                        </div>
                     </div>
                     </div>
-              
                 </form>
             </section>
         );

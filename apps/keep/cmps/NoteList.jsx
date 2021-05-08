@@ -12,12 +12,12 @@ export function NoteList({ notes, onRemoveNote, onPinNote, onEditNote, onToggleS
 
   return (
     <div className="note-list">
-      <h4>Pinned Notes</h4>
+      <h4>Pinned Notes</h4>  
       <div className="pinned-notes">
-        {pinnedNotes.map(note => <div className={`note-preview ${getColorClass(note.style.backgroundColor)}`} key={note.id}>
+        {pinnedNotes.map(note => <div className={`note-container ${getColorClass(note.style.backgroundColor)}`} key={note.id}>
           <NotePreview note={note} />
           {note.style.isChanging && <Colors note={note} onChangeColor={onChangeColor}/>}
-          <div className="flex">
+          <div className="flex edit-icons justify-center align-center">
             <Pin note={note} onPinNote={onPinNote} />
             <Palette note={note} onToggleStyle={onToggleStyle}/>
             <Edit note={note} onEditNote={onEditNote}/>
@@ -26,12 +26,12 @@ export function NoteList({ notes, onRemoveNote, onPinNote, onEditNote, onToggleS
         </div>
         )}
       </div>
-      <div className="notes">
         <h4>Other Notes</h4>
-        {notes.map(note => <div className={`note-preview ${getColorClass(note.style.backgroundColor)}`} key={note.id}>
+      <div className="notes">
+        {notes.map(note => <div className={`note-container ${getColorClass(note.style.backgroundColor)}`} key={note.id}>
           <NotePreview note={note} />
           {note.style.isChanging && <Colors note={note} onChangeColor={onChangeColor}/>}
-          <div className="flex">
+          <div className="flex edit-icons justify-center align-center">
             <Pin note={note} onPinNote={onPinNote} />
             <Palette note={note} onToggleStyle={onToggleStyle}/>
             <Edit note={note} onEditNote={onEditNote}/>

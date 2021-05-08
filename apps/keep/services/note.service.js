@@ -106,14 +106,17 @@ function saveNote(noteToUpdate) {
 
 function createNote(state) {
     console.log(state);
-    const { type, title, info, style } = state.note;
+    const { type, title, info } = state.note;
     const note = {
         id: utilService.makeId(),
         type,
         isPinned: false,
         title,
         info,
-        style
+        style: {
+            isChanging: false,
+            backgroundColor: '#e3e6e9'
+        }
     }
     gNotes.unshift(note);
     _saveNotesToStorage()
@@ -133,21 +136,21 @@ function _createNotes() {
                 },
                 style: {
                     isChanging: false,
-                    backgroundColor: '#B0BAC3'
+                    backgroundColor: '#e3e6e9'
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "NoteImg",
                 isPinned: true,
-                title: "Art",
+                title: "Painting",
                 info: {
                     url: "https://i.pinimg.com/564x/9a/b0/7b/9ab07b7ae73e44a806c468e6fd174149.jpg",
 
                 },
                 style: {
                     isChanging: false,
-                    backgroundColor: '#B0BAC3'
+                    backgroundColor: '#e3e6e9'
                 }
             },
             {
@@ -161,7 +164,7 @@ function _createNotes() {
                 },
                 style: {
                     isChanging: false,
-                    backgroundColor: '#B0BAC3'
+                    backgroundColor: '#e3e6e9'
                 }
             },
             {
@@ -178,7 +181,78 @@ function _createNotes() {
                 },
                 style: {
                     isChanging: false,
-                    backgroundColor: '#B0BAC3'
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteTodos",
+                isPinned: true,
+                title: "Groceries",
+                info: {
+                    todos: [
+                        { id: utilService.makeId(), txt: "Apples", doneAt: null },
+                        { id: utilService.makeId(), txt: "bananas", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Oranges", doneAt: null }
+                    ]
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteImg",
+                isPinned: true,
+                title: "Art",
+                info: {
+                    url: "https://i.pinimg.com/564x/30/ef/bb/30efbb5fb42c5d287198f8e35e64bf71.jpg",
+
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: true,
+                title: 'Coding',
+                info: {
+                    txt: "Fullstack Me Baby!"
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteVideo",
+                isPinned: false,
+                title: "Music",
+                info: {
+                    url: "https://www.youtube.com/embed/XXYlFuWEuKI",
+
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: false,
+                title: 'Ideas',
+                info: {
+                    txt: "Treat was encouraging developers to do you want I didn't. Power, way Cupertino was the drawing board it on and aspect rat. Multi-Sensory as taking leading and typography the concept of. Fighting car industry excels at users, without going back. The and that most of whether we had the senses. All smells, feels, possibly even Windows and is that Twitter UI according. "
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
                 }
             }
         ];

@@ -8,11 +8,9 @@ export function NoteTodos({ note, onRemoveNote}) {
      console.log(todos);
     //  const url = `/note/edit/${note.id}`
 return (
-    <section>
-        
+    <section className="note-preview note-todos">
         <h4>{note.title}</h4>
         {todos.map((todo, idx) => <TodoListItem todo={todo} id={note.id} key={idx} idx={idx}/>)}
-        {/* <button onClick={()=>onRemoveNote(note.id)}>X</button> */}
     </section>
 )
 }

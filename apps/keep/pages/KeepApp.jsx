@@ -45,6 +45,7 @@ export class KeepApp extends React.Component {
             case '#E6F3FF': return 'light-blue';
             case '#B0BAC3': return 'grey';
             case '#F2CB05': return 'yellow';
+            case '#e3e6e9': return 'light-grey';
         }
     }
 
@@ -73,7 +74,7 @@ export class KeepApp extends React.Component {
         if (!notes) return <div>Loading...</div>
         return (
             <div>
-                <section className="container">
+                <section className="keep-app container">
                     <NoteFilter onSetFilter={this.onSetFilter} />
                     <NoteAdd onAddNote={this.onAddNote} />
 

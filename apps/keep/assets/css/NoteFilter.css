@@ -9,4 +9,24 @@
 
 .filter-container form input {
     padding: 5px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+
+/* MEDIUM */
+
+@media (min-width: 700px) {
+    .filter-container {
+        width: 80%;
+    }
+}
+
+
+/* LARGE */
+
+@media (min-width: 1100px) {
+    .filter-container {
+        width: 60%;
+    }
 }

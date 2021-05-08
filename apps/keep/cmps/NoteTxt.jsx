@@ -5,10 +5,9 @@ export function NoteTxt({ note, onRemoveNote, isLongTxtShown }) {
 // console.log(note);
 const url = `/note/edit/${note.id}`
 return (
-    <section>
+    <section className="note-preview note-txt">
         <h4>{note.title}</h4>
         <LongTxt text={note.info.txt} isLongTxtShown={isLongTxtShown}/>
-        {/* <button onClick={()=>onRemoveNote(note.id)}>X</button> */}
     </section>
 )
 }

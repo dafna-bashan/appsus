@@ -1,23 +1,9 @@
 @import './NoteAdd.css';
 @import './NoteFilter.css';
+@import './NoteList.css';
 svg {
     width: 20px;
     margin: 0 5px;
-}
-
-.note-preview img {
-    width: 150px;
-}
-
-iframe {
-    width: 200px;
-    height: 112.5px;
-}
-
-.note-preview {
-    padding: 10px;
-    display: inline-block;
-    margin: 10px;
 }
 
 .done {
@@ -53,6 +39,10 @@ iframe {
 
 .grey {
     background-color: #B0BAC3;
+}
+
+.light-grey {
+    background-color: #e3e6e9;
 }
 
 .yellow {

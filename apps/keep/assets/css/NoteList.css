@@ -1,0 +1,76 @@
+.pinned-notes {
+    columns: 300px 1;
+}
+
+.note-preview img {
+    width: 200px;
+}
+
+iframe {
+    width: 250px;
+    height: 140.625px;
+}
+
+.note-container {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 100%;
+    display: inline-block;
+}
+
+
+/* .note-preview {
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+} */
+
+h4 {
+    display: block;
+}
+
+.note-img img,
+.note-video iframe {
+    width: 100%;
+    text-align: center;
+}
+
+.edit-icons {
+    margin-top: 5px;
+}
+
+
+/* SMALL */
+
+@media (min-width: 540px) {
+    .container {
+        max-width: 500px;
+    }
+}
+
+
+/* MEDIUM */
+
+@media (min-width: 700px) {
+    .container {
+        max-width: 660px;
+    }
+    .note-list>* {
+        columns: 200px 3;
+        display: inline-block;
+    }
+}
+
+
+/* LARGE */
+
+@media (min-width: 1100px) {
+    .container {
+        max-width: 1060px;
+    }
+    .note-list>* {
+        columns: 180px 4;
+        display: inline-block;
+    }
+}
