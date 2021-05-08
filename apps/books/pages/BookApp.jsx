@@ -37,7 +37,7 @@ export class BookApp extends React.Component {
         return (
             <div>
             <section>
-            <UserMsg/>
+            {/* <UserMsg/> */}
                 {!selectedBook && <React.Fragment>
                     <Link to="/book/add">Add book</Link>
                     <BookFilter onSetFilter={this.onSetFilter} />
