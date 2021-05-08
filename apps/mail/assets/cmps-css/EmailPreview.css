@@ -113,10 +113,16 @@ td {
     .email-list {
         width: 1060px;
     }
-
+    
     .email-body-prv {
-        max-width: 720.03px;
+        /* max-width: 720.03px; */
+        max-width: 688.03px;
     }
+    
+    .email-sub-prv {
+        width: 200px;
+    }
+    
     tr {
         flex-direction: row;
         width: 100%
