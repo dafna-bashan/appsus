@@ -36,7 +36,8 @@ export class BookApp extends React.Component {
         if (!books) return <div>Loading...</div>
         return (
             <div>
-            <section className = "container">
+            <section>
+            <UserMsg/>
                 {!selectedBook && <React.Fragment>
                     <Link to="/book/add">Add book</Link>
                     <BookFilter onSetFilter={this.onSetFilter} />

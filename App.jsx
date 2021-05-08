@@ -17,15 +17,15 @@ export function App() {
         <Router>
             <div className="app-container">
                 <AppHeader />
-                <main className="main-content">
+                <main className="main-content container">
                     <Switch>
                         {/* <Route component={EmailApp} path="/mail/add" /> */}
                         <Route component={NoteEdit} path="/keep/edit/:noteId?" />
                         {/* <Route component={EmailCompose}  path="/mail/compose=new" /> */}
                         <Route component={EmailDetails} path="/mail/:det/:mailId" />
                         <Route component={EmailApp} path="/mail" />
-                        <Route component={BookDetails} path="/book/:bookId" />
                         <Route component={BookAdd} path="/book/add" />
+                        <Route component={BookDetails} path="/book/:bookId" />
                         <Route component={BookApp} path="/book" />
                         <Route component={KeepApp} path="/keep" />
                         <Route component={Home} path="/" />

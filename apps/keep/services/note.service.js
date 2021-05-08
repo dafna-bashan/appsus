@@ -203,6 +203,19 @@ function _createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "NoteTxt",
+                isPinned: true,
+                title: 'Modern Art',
+                info: {
+                    txt: "That centuries been proposed, among them were part of modern art criticism his interests. Reflected to perform psychoanalysis is Laurie Schneider Adams, who gathered in this is. Served surveys of modern art history of the important modern painting."
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "NoteImg",
                 isPinned: true,
                 title: "Art",
