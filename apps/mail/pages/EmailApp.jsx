@@ -43,11 +43,6 @@ export class EmailApp extends React.Component {
     }
 
     isOpenCompose = () => {
-        // console.log('isCompose')
-        // var searchParams = new URLSearchParams(this.props.location.search);
-        // var params = searchParams.get('compose')
-        // console.log('params', params)
-        // params && this.setState({ isToShowCompose: true })
         this.setState({ isToShowCompose: true })
     }
 
@@ -98,20 +93,7 @@ export class EmailApp extends React.Component {
 
     onSetSort = (SortBy) => {
         this.setState({ SortBy }, this.loadEmails)
-        // console.log(SortBy)
-        // var emailsArr = [...this.state.emails]
-        // if (this.state.SortBy === 'Date') {
-        //     emailsArr.sort(function(x, y){
-        //         return x.sentAt - y.sentAt;
-        //     })
-        // } else{
-        //     emailsArr.sort(function(a, b){
-        //         if(a.title < b.title) { return -1; }
-        //         if(a.title > b.title) { return 1; }
-        //         return 0;
-        //     })
-        // }
-        // this.setState({emails : emailsArr})
+
     }
 
 
@@ -123,7 +105,7 @@ export class EmailApp extends React.Component {
             <div>
                 <section className="email-app container">
                     <Link to={`/mail/?compose=new`}>
-                        {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
+                        {!this.state.isComposeMode && <button className="compose-btn" onClick={this.isOpenCompose}>compose</button>}
                     </Link>
                     {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
                    <EmailFilter onSetFilter={this.onSetFilter} />
