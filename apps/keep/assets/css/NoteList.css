@@ -41,21 +41,9 @@ h4 {
 }
 
 
-/* SMALL */
-
-@media (min-width: 540px) {
-    .container {
-        max-width: 500px;
-    }
-}
-
-
 /* MEDIUM */
 
 @media (min-width: 700px) {
-    .container {
-        max-width: 660px;
-    }
     .note-list>* {
         columns: 200px 3;
         display: inline-block;
@@ -66,9 +54,6 @@ h4 {
 /* LARGE */
 
 @media (min-width: 1100px) {
-    .container {
-        max-width: 1060px;
-    }
     .note-list>* {
         columns: 180px 4;
         display: inline-block;

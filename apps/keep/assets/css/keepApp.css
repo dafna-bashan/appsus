@@ -5,6 +5,7 @@
 svg {
     width: 20px;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 .done {

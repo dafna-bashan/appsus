@@ -67,6 +67,7 @@ button {
 a:link {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 a:visited {
@@ -81,7 +82,7 @@ a:hover {
 
 a:active {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 

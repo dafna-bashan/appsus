@@ -1,0 +1,38 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book-list>* {
+    margin: 10px;
+}
+
+.book-preview {
+    box-shadow: 0 0px 3px 2px #7e7d7d78;
+    padding: 10px;
+    text-align: center;
+    width: 280px;
+}
+
+.book-preview img {
+    width: 100%;
+}
+
+
+/* MEDIUM */
+
+@media (min-width: 700px) {
+    .book-preview {
+        width: 250px;
+    }
+}
+
+
+/* LARGE */
+
+@media (min-width: 1100px) {
+    .book-preview {
+        width: 200px;
+    }
+}

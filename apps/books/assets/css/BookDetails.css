@@ -1,0 +1,40 @@
+.book-details {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.book-details button {
+    margin: 15px;
+}
+
+.remove {
+    margin: 5px;
+}
+
+.book-details a {
+    background-color: rgb(223, 223, 223);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.link {
+    margin: 20px;
+}
+
+.expensive {
+    color: red;
+    display: inline-block;
+    font-family: roboto-bold;
+}
+
+.cheap {
+    color: green;
+    display: inline-block;
+    font-family: roboto-bold;
+}
+
+.sale {
+    color: rgb(231, 162, 1);
+    font-family: roboto-bold;
+    background-color: transparent;
+}

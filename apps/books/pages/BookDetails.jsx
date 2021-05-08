@@ -88,7 +88,7 @@ export class BookDetails extends React.Component {
         {thumbnail && <img src={thumbnail} />}
         <h2>{`${title} | ${authors}`}</h2>
         <p>{subtitle}</p>
-        <p className={this.priceClass}>{`${listPrice.amount} ${this.currencyIcon}`}<span className="sale">{sale}</span></p>
+        <p className={this.priceClass}>{`${listPrice.amount} ${this.currencyIcon} `}<span className="sale">{sale}</span></p>
         <p>Page count: {`${pageCount} ${this.readingLevel}`}</p>
         <p>Categories: {categories && categories.map(category => ' ' + category)}</p>
         <p>Year: {`${publishedDate} ${this.seniority}`}</p>
@@ -96,9 +96,13 @@ export class BookDetails extends React.Component {
         <LongTxt text={description} isLongTxtShown={this.state.isLongTxtShown}/>
         <button onClick={this.setDescLength}>{buttonTxt}</button>
         <Route component={ReviewAdd} path="/book/:bookId/add-review" />
+        <div className="link">
         <Link className="btn-add-review" to={`/book/${id}/add-review`}>Add Review</Link>
+        </div>
         <ReviewsList reviews={reviews} removeReview={this.onRemoveReview} />
+        <div className="link">
         <Link to={`/book/${bookService.getNextBookId(id)}`}>Next Book</Link>
+        </div>
         <Link to={`/book`}>Go back</Link>
         {/* <button onClick={() => onRemoveBook(book.id)}>Delete Book</button> */}
       </div>
