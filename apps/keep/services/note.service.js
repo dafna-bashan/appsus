@@ -52,7 +52,7 @@ function togglePinNote(selectedNote) {
     const idx = findNoteIdx(selectedNote.id)
     if (selectedNote.isPinned === true) gNotes[idx].isPinned = false;
     else gNotes[idx].isPinned = true;
-    console.log(selectedNote);
+    // console.log(selectedNote);
     _saveNotesToStorage();
 }
 
@@ -73,7 +73,7 @@ function toggleStyle(noteId) {
 }
 
 function changeColor(noteId, color) {
-    console.log(noteId, color);
+    // console.log(noteId, color);
     const idx = findNoteIdx(noteId);
     gNotes[idx].style.backgroundColor = color;
     _saveNotesToStorage();
@@ -139,6 +139,7 @@ function _createNotes() {
                     backgroundColor: '#e3e6e9'
                 }
             },
+
             {
                 id: utilService.makeId(),
                 type: "NoteImg",
@@ -186,9 +187,26 @@ function _createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "NoteTodos",
+                isPinned: false,
+                title: "Todo",
+                info: {
+                    todos: [
+                        { id: utilService.makeId(), txt: "T-shirts", doneAt: null },
+                        { id: utilService.makeId(), txt: "Dresses", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Shoes", doneAt: null }
+                    ]
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "NoteTxt",
                 isPinned: true,
-                title: 'Modern Art',
+                title: 'InDesign',
                 info: {
                     txt: "InDesign are built on the vital element in a message. Of developers to be able to the message that applying. Task design an interface that dictates how we might soon be. Challenge no other updates the product or not interested in the senses. Apple throws at using the product or even tastes, good old pencil. Design single adaptive interface elements but I believe that appeals."
                 },
@@ -248,10 +266,24 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "NoteImg",
-                isPinned: true,
+                isPinned: false,
                 title: "Art",
                 info: {
                     url: "https://i.pinimg.com/564x/30/ef/bb/30efbb5fb42c5d287198f8e35e64bf71.jpg",
+
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteImg",
+                isPinned: true,
+                title: "Sketch",
+                info: {
+                    url: "https://i.pinimg.com/564x/b2/8d/24/b28d24bd412c872e818fb65ce540349b.jpg",
 
                 },
                 style: {
@@ -298,7 +330,20 @@ function _createNotes() {
                     isChanging: false,
                     backgroundColor: '#e3e6e9'
                 }
-            }
+            },
+            {
+                id: utilService.makeId(),
+                type: "NoteImg",
+                isPinned: false,
+                title: "Illustration",
+                info: {
+                    url: "https://i.pinimg.com/564x/ef/22/ae/ef22ae10d9ad3ee3e627381bf72c3ab3.jpg"
+                },
+                style: {
+                    isChanging: false,
+                    backgroundColor: '#e3e6e9'
+                }
+            },
         ];
     }
 

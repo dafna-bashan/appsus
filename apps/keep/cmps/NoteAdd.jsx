@@ -22,9 +22,7 @@ export class NoteAdd extends React.Component {
     };
 
     componentDidMount() {
-        // We dont use dqs in react, instead use Ref
-        // document.querySelector('input')
-        // console.log(this.inputRef);
+
         this.inputRef.current.focus()
     }
 
@@ -68,26 +66,9 @@ export class NoteAdd extends React.Component {
         ));
     }
 
-    // AddNote = (ev) => {
-    //     ev.preventDefault();
-    //     console.log(ev);
-    //     console.log(this.state);
-    //     noteService.createNote(this.state)
-    //         .then(() => { this.props.onAddNote() })
-    //     // .then(() => {this.setState((prevState) => ({
-    //     //     isAdding: false,
-    //     //     note: {}
-    //     // }
-
-
-    //     // })
-    //     // ));
-    //     // });
-    // }
-
     addNote = (ev) => {
         ev.preventDefault()
-        console.log(ev);
+        // console.log(ev);
         noteService.createNote(this.state)
             .then(() => { this.props.onAddNote() })
             .then(() => {
@@ -106,11 +87,11 @@ export class NoteAdd extends React.Component {
                     }
                 })
             })
-            console.log(this.state);
+            // console.log(this.state);
     }
 
     get placeholder() {
-        console.log(this.state.note.type);
+        // console.log(this.state.note.type);
         switch (this.state.note.type) {
             case 'NoteTxt': return 'Enter text';
             case 'NoteImg': return 'Enter image URL';

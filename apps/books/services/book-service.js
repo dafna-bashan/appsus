@@ -46,7 +46,7 @@ function searchGoogleBooks(keyWord) {
 
 function addGoogleBook(googleBook) {
     const isBookExist = gBooks.find(book => book.id === googleBook.id)
-    console.log(isBookExist);
+        // console.log(isBookExist);
     if (isBookExist) return null;
 
     var book = {
@@ -85,8 +85,6 @@ function getNextBookId(bookId) {
 }
 
 function addReview(bookId, review) {
-    console.log(review);
-    // var book = getBookById(bookId);
     const idx = gBooks.findIndex(book => book.id === bookId)
     if (!gBooks[idx]) return Promise.reject('book not found')
     if (!gBooks[idx].reviews) gBooks[idx].reviews = []

@@ -10,7 +10,7 @@ export function NotePreview(props) {
 const url = `/note/edit/${note.id}`
         switch (note.type) {
             case 'NoteTxt':
-                console.log('txt');
+                // console.log('txt');
                 return <NoteTxt {...props}/>
             case 'NoteImg':
                 return <NoteImg {...props}/>

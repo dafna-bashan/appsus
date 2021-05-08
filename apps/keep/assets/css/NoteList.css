@@ -3,9 +3,7 @@
     column-width: 300px;
     width: 100%;
     break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid
+    padding: 10px;
 }
 
 .note-preview img {
@@ -19,14 +17,14 @@ iframe {
 
 .note-container {
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 15px;
     border-radius: 5px;
     width: 100%;
     break-inside: avoid;
-    break-before: avoid;
+    /* break-before: avoid;
     break-after: avoid;
-    page-break-before: avoid;
-    display: inline-block;
+    page-break-before: avoid; */
+    /* display: inline-block; */
 }
 
 

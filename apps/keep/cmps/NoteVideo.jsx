@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 export function NoteVideo({ note}) {
     const{url} = note.info
     const linkUrl = `/note/edit/${note.id}`
-    console.log(url);
+    // console.log(url);
 return (
    <section className="note-preview note-video">  
        <h4>{note.title}</h4>

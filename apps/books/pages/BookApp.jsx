@@ -16,7 +16,7 @@ export class BookApp extends React.Component {
 
     loadBooks() {
         bookService.query(this.state.filterBy).then((books) => {
-            // console.log(books);
+       
             this.setState({ books })
         })
     }

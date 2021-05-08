@@ -59,7 +59,7 @@ export class TodoListItem extends React.Component {
     render() {
         const {id, idx } = this.props;
         const {todo, note} = this.props;
-        console.log(todo, note);
+        // console.log(todo, note);
         const name = `list-item-${id}-${idx}`;
         // console.log(name);
         const txtClassName = todo.doneAt ? 'done': 'not-done'

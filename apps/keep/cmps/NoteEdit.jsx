@@ -12,12 +12,12 @@ export class NoteEdit extends React.Component {
 
   componentDidMount() {
     const id = this.props.match.params.noteId
-    console.log(id);
+    // console.log(id);
     if (!id) return
     noteService.getNoteById(id).then(note => {
       this.setState({ note })
     })
-    console.log(this.state.note);
+    // console.log(this.state.note);
   }
 
   handleChange = (ev) => {
@@ -80,7 +80,7 @@ export class NoteEdit extends React.Component {
   onSaveNote = (ev) => {
     ev.preventDefault()
     const { note } = this.state
-    console.log(note);
+    // console.log(note);
     noteService.saveNote(note).then(() => {
       this.setState((prevState) => ({
         note: {
@@ -98,10 +98,10 @@ export class NoteEdit extends React.Component {
     const { note } = this.state
     let todosArr = this.state.note.info.todos;
     let todo = { txt: this.state.note.info.txt, doneAt: null }
-    console.log(todosArr, todo);
+    // console.log(todosArr, todo);
     todosArr.push(todo);
     let newTodos = todosArr;
-    console.log(newTodos);
+    // console.log(newTodos);
     noteService.saveNote(note).then(() => {
       this.setState((prevState) => ({
         note: {
@@ -127,7 +127,7 @@ export class NoteEdit extends React.Component {
 
   get titleValue() {
     const { note } = this.state
-    console.log(note);
+    // console.log(note);
     return note.title;
   }
 
@@ -151,7 +151,7 @@ export class NoteEdit extends React.Component {
         {note.type === 'NoteTodos' &&
           <section className="edit-todos flex">
             <h4>{note.title}</h4>
-            {console.log(note)}
+            {/* {console.log(note)} */}
             {note.info.todos.map((todo, idx) => <div className="flex" key={idx}>
               <TodoListItem todo={todo} note={note} idx={idx} onToggleDone={this.onToggleDone}/>
               <TrashTodo todo={todo} note={note} onRemoveTodo={this.onRemoveTodo}/>

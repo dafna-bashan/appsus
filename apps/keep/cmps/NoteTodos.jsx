@@ -5,7 +5,7 @@ import {TodoListItem} from './TodoListItem.jsx';
 
 export function NoteTodos({ note, onRemoveNote}) {
      const{todos} = note.info
-     console.log(todos);
+    //  console.log(todos);
     //  const url = `/note/edit/${note.id}`
 return (
     <section className="note-preview note-todos">

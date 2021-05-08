@@ -39,7 +39,7 @@ export class KeepApp extends React.Component {
     }
 
     getColorClass = (color) => {
-        console.log(color);
+        // console.log(color);
         switch (color) {
             case '#7C838A': return 'blue';
             case '#E6F3FF': return 'light-blue';
