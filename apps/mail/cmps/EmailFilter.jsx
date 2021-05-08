@@ -58,20 +58,14 @@ export class EmailFilter extends React.Component {
         return (
 
             <form className="email-filter" onSubmit={this.onFilter}>
-                {/* <div className="email-filter"> */}
-                {/* <label htmlFor="byVendor">By vendor</label>
-            <input type="text" id="byVendor" ref={this.inputRef} name="vendor" value={vendor} onChange={this.handleChange} />
-            <label htmlFor="minSpeed">Min speed</label>
-            <input type="number" id="minSpeed" name="minSpeed" value={minSpeed} onChange={this.handleChange} /> */}
-
                 {/* <select id="myList" onChange={this.setSelectedOption}>  */}
-                <select id="readFilter" name="readFilter" onChange={this.handleChange}>
+                <select className="read-filter" id="readFilter" name="readFilter" onChange={this.handleChange}>
                     {/* <option> choose </option> */}
                     <option> All </option>
                     <option> Read </option>
                     <option> Unread </option>
                 </select>
-                <input type="search" name="searchText" id="searchText" placeholder="search mail by text" onChange={this.handleChange} />
+                <input className="email-search" type="search" name="searchText" id="searchText" placeholder="search mail by text" onChange={this.handleChange} />
                 {/* <button onClick={this.loadResults}>Search</button> */}
                 {/* </div> */}
             </form>

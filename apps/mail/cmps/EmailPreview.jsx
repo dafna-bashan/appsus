@@ -32,9 +32,11 @@ export function EmailPreview({ email, onMarkMail, onDeleteEmail }) {
             {/* {email.body} */}
           </Link>
         </td >
-        <td className="inbox-td"> {timeToShow()}</td>
-        <td className="inbox-td"><img className="delete-mail" onClick={() => onDeleteEmail(email.id)}></img></td>
-        <td className="inbox-td"><img className={`img-${email.isRead ? "read" : "unread"}`} onClick={() => onMarkMail(email.id)}></img></td>
+        <td className="inbox-td flex">{timeToShow()}</td>
+
+        {/* <td className="inbox-td del-td"><img className="delete-mail" onClick={() => onDeleteEmail(email.id)}></img></td>
+      <td className="inbox-td del-read"><img className={`img-${email.isRead ? "read" : "unread"}`} onClick={() => onMarkMail(email.id)}></img></td> */}
+      <td className="inbox-td email-icons flex"><img className={`img-${email.isRead ? "read" : "unread"}`} onClick={() => onMarkMail(email.id)}></img><img className="delete-mail" onClick={() => onDeleteEmail(email.id)}></img></td> 
       </tr>
     </React.Fragment >
   )

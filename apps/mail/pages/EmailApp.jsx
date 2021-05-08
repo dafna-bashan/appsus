@@ -121,7 +121,7 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div>
         return (
             <div>
-                <section className="container">
+                <section className="email-app container">
                     <Link to={`/mail/?compose=new`}>
                         {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
                     </Link>
