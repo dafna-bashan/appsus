@@ -23,7 +23,28 @@ padding: 20px;
     height: 100%;
     /* align-items: center; */
 }
+
+.detail-body{
+    white-space: pre-wrap;
+}
 /* 
 main.main-content .email-details{
     background-color: khaki;
 } */
+
+/* MEDIUM */
+
+@media (min-width: 700px) {
+    .email-details{
+        width: 660px;
+    }
+}
+
+/* LARGE */
+
+@media (min-width: 1100px) {
+    .email-details{
+        width: 1060px;
+    }
+
+}

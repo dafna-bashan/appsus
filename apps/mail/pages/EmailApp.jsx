@@ -126,9 +126,9 @@ export class EmailApp extends React.Component {
                         {!this.state.isComposeMode && <h2 onClick={this.isOpenCompose}>compose</h2>}
                     </Link>
                     {this.state.isToShowCompose && <EmailCompose onAddMail={this.onAddMail} mailToCompose={this.mailToCompose} />}
-                   {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
-                    <form className="email-sort" onSubmit={() => onSort()}>
-                        <select id="sortBy" name="sortBy" onChange={this.handleSortChange}>
+                   <EmailFilter onSetFilter={this.onSetFilter} />
+                    <form className="email-sort-form" onSubmit={() => onSort()}>
+                        <select  className="email-sort" id="sortBy" name="sortBy" onChange={this.handleSortChange}>
                             <option> Date </option>
                             <option> Subject </option>
                         </select>
