@@ -20,7 +20,7 @@ function query(filterBy, sortBy) {
     var { readFilter, searchText } = filterBy
     console.log(sortBy)
     console.log(filterBy)
-    var filteredEmails
+    var filteredEmails = _sortBy(sortBy, gMails)
     // if (readFilter === 'All' && !searchText) return Promise.resolve(filteredEmails)
 
     filteredEmails = gMails.filter(mail => {
@@ -34,26 +34,11 @@ function query(filterBy, sortBy) {
             )
         })
     }
-    filteredEmails = _sortBy(sortBy, filteredEmails)
     return Promise.resolve(filteredEmails)
     // }
     // return Promise.resolve(gMails);
 }
 
-// function query(filterBy, sortBy) {
-//     var { readFilter, searchText } = filterBy
-//     console.log(sortBy)
-//     console.log(filterBy)
-//     var filteredEmails
-//     if (readFilter !== 'All' || (readFilter && searchText)) {
-//             filteredEmails = gMails.filter(mail => {
-//                 return ((readFilter ==='Read')? mail.isRead : !mail.isRead) && (mail.subject.toLowerCase().includes(searchText.toLowerCase()) || mail.body.toLowerCase().includes(searchText.toLowerCase()))
-//             })
-//             filteredEmails = _sortBy(sortBy,filteredEmails)
-//         return Promise.resolve(filteredEmails)
-//     }
-//     return Promise.resolve(gMails);
-// }
 
 function _sortBy(sortByParam, mails) {
     if (sortByParam === 'Date') {
