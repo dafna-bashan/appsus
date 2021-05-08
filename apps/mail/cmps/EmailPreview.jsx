@@ -26,13 +26,13 @@ export function EmailPreview({ email, onMarkMail, onDeleteEmail }) {
             {email.subject}
           </Link>
         </td>
-        <td className="inbox-td email-body-prv">
+        <td className="inbox-td email-body-prv flex-1">
           <Link to={`/mail/det/${email.id}`}>
             <LongTxt text={email.body} isLongTxtShown={false} />
             {/* {email.body} */}
           </Link>
         </td >
-        <td className="inbox-td flex">{timeToShow()}</td>
+        <td className="inbox-td flex email-time">{timeToShow()}</td>
 
         {/* <td className="inbox-td del-td"><img className="delete-mail" onClick={() => onDeleteEmail(email.id)}></img></td>
       <td className="inbox-td del-read"><img className={`img-${email.isRead ? "read" : "unread"}`} onClick={() => onMarkMail(email.id)}></img></td> */}
