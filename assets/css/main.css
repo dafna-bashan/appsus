@@ -4,7 +4,7 @@
 @import '../../apps/mail/assets/pages-css/EmailCompose.css';
 @import './app-header.css';
 @import './app-footer.css';
-@import '../../apps/keep/assets/css/note-add.css';
+@import '../../apps/keep/assets/css/keep.css';
 * {
     box-sizing: border-box;
     user-select: none;
@@ -149,6 +149,7 @@ a:active {
 }
 
 .main-content {
+    margin-top: 100px;
     padding-top: 20px;
     padding-bottom: 30px;
     align-items: center;

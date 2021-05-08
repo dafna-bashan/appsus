@@ -126,15 +126,20 @@ export class NoteAdd extends React.Component {
         return (
             <section>
                 <form onSubmit={this.addNote}>
+                    <div className="flex add-container container">
+                    <div className="flex add-inputs">
                     <input type="text" name="title" value={title} id="title" placeholder="title" onChange={this.handleChange} ref={this.inputRef} required />
-                    <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} value={info.txt} required></textarea>
-                    {/* <input type="text" name="info" id="info"    /> */}
+                    <textarea name="info" id="info" cols="30" rows="3" placeholder={this.placeholder} onChange={this.handleChange} value={info.txt} required></textarea>    
+                    </div>
+                    <div className="flex space-between btn-container">
                     <Icons noteType="NoteTxt" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteTodos" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteImg" handleChange={this.handleTypeChange} />
                     <Icons noteType="NoteVideo" handleChange={this.handleTypeChange} />
-                    {/* <button onClick={this.handleChange}><Icons noteType="NoteAudio"/></button> */}
                     <button>Add</button>
+                    </div>
+                    </div>
+              
                 </form>
             </section>
         );

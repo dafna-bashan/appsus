@@ -22,11 +22,13 @@ export class NoteFilter extends React.Component {
     render() {
       const { title } = this.state.filterBy
       return (
-        <form className="note-filter" onSubmit={this.onFilter}>
-          {/* <label htmlFor="byTitle">By Title</label> */}
-          <input type="text" id="byTitle" name="title" value={title} onChange={this.handleChange} placeholder="search notes by title"/>
-          {/* <button>Filter</button> */}
-        </form>
-      )
+        <div className="filter-container container flex">
+          <form className="note-filter" onSubmit={this.onFilter}>
+            {/* <label htmlFor="byTitle">By Title</label> */}
+            <input type="text" id="byTitle" name="title" value={title} onChange={this.handleChange} placeholder="search notes by title"/>
+            {/* <button>Filter</button> */}
+          </form>
+        </div>
+        )
     }
   }

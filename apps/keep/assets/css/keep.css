@@ -1,0 +1,60 @@
+@import './NoteAdd.css';
+@import './NoteFilter.css';
+svg {
+    width: 20px;
+    margin: 0 5px;
+}
+
+.note-preview img {
+    width: 150px;
+}
+
+iframe {
+    width: 200px;
+    height: 112.5px;
+}
+
+.note-preview {
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.not-done {
+    text-decoration: none;
+}
+
+.color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 3px;
+    background-color: rgb(121, 54, 54);
+}
+
+.colors-container {
+    position: absolute;
+    margin-top: 20px;
+    background-color: rgb(235, 235, 235);
+    padding: 5px;
+}
+
+.blue {
+    background-color: #7C838A;
+}
+
+.light-blue {
+    background-color: #E6F3FF;
+}
+
+.grey {
+    background-color: #B0BAC3;
+}
+
+.yellow {
+    background-color: #F2CB05;
+}

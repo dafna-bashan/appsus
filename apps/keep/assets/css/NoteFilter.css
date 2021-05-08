@@ -1,0 +1,12 @@
+.filter-container {
+    flex-direction: column;
+    /* margin: 10px auto; */
+}
+
+.filter-container form {
+    flex: 1;
+}
+
+.filter-container form input {
+    padding: 5px;
+}

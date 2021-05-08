@@ -4,12 +4,12 @@ import { noteService } from '../services/note.service.js'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { NoteAdd } from '../cmps/NoteAdd.jsx'
+import { NoteEdit } from '../cmps/NoteEdit.jsx'
 
 export class KeepApp extends React.Component {
     state = {
         notes: null,
         filterBy: null,
-        isEditing: false,
     }
 
     componentDidMount() {
@@ -27,6 +27,27 @@ export class KeepApp extends React.Component {
         this.setState({ filterBy }, this.loadNotes)
     }
 
+    onToggleStyle = (id) => {
+        noteService.toggleStyle(id);
+        this.loadNotes();
+    }
+
+    onChangeColor = (id, color) => {
+        noteService.changeColor(id, color)
+        noteService.toggleStyle(id);
+        this.loadNotes();
+    }
+
+    getColorClass = (color) => {
+        console.log(color);
+        switch (color) {
+            case '#7C838A': return 'blue';
+            case '#E6F3FF': return 'light-blue';
+            case '#B0BAC3': return 'grey';
+            case '#F2CB05': return 'yellow';
+        }
+    }
+
     onAddNote = () => {
         this.loadNotes();
     }
@@ -42,7 +63,7 @@ export class KeepApp extends React.Component {
     }
 
     onEditNote = (isEditing) => {
-        this.setState({ isEditing})
+        this.setState({ isEditing })
     }
 
     render() {
@@ -57,7 +78,10 @@ export class KeepApp extends React.Component {
                     <NoteAdd onAddNote={this.onAddNote} />
 
                     {/* <NoteFilter onSetFilter={this.onSetFilter} /> */}
-                    <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onPinNote={this.onPinNote} onEditNote={this.onEditNote}/>
+                    <NoteList notes={notes} onRemoveNote={this.onRemoveNote}
+                        onPinNote={this.onPinNote} onEditNote={this.onEditNote}
+                        onToggleStyle={this.onToggleStyle} onChangeColor={this.onChangeColor}
+                        getColorClass={this.getColorClass} />
                 </section>
             </div>
         )
