@@ -93,7 +93,7 @@ export class EmailApp extends React.Component {
 
     onSetSort = (SortBy) => {
         this.setState({ SortBy }, this.loadEmails)
-
+        Cconsole.log(SortBy)
     }
 
 

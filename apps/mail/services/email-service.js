@@ -158,6 +158,8 @@ function _createMails() {
     _saveMailsToStorage();
 }
 
+///
+
 function composeMail(mailToCompose) {
     console.log('composeMail(mailToCompose)');
     console.log('mailToCompose', mailToCompose)
